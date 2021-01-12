@@ -1,0 +1,60 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+}
+
+.dialogs_items {
+ padding-right: 15px;
+}   
+
+.messagesWrapper {
+    display: flex;
+    flex-direction: column
+}
+
+.message_area {
+    width: 100%;
+}
+
+.message_area textarea {
+    overflow: auto;
+    word-break: break-word;
+}
+
+.message_area textarea:focus {
+    outline: none;
+}
+
+.sendForm {
+    display: flex;
+    height: 33px;
+}
+
+.messageButton {
+    height: 38px;
+    width: 65px;
+    background-color: rgba(116, 158, 255);
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    animation-name: appear;
+    animation-duration: 0.4s;
+}
+
+.messageButton:hover {
+    background-color: rgb(79, 132, 255);
+}
+
+.messagesForm {
+    height: 115px;
+}
+
+@keyframes appear {
+    from { transform: scale(0); 
+        opacity: 0.25;
+    }
+    to {transform: scale(1); 
+        opacity: 1;
+    }
+}

@@ -1,0 +1,63 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profileInfo {
+    width: 250px;
+}
+
+.profileContent {
+    width: 70%;
+}
+
+.ProfilePhotosBlock {
+    margin-bottom: 20px;
+    max-width: 1000px;
+}
+
+.ProfileAboutBlock, .ProfileFriendsBlock {
+    width: 48%;
+    background-color: #fff;
+    box-sizing: border-box;
+    max-width: 500px;
+    border: 1px solid #e2e9e6;
+    margin-right: 15px;
+    height: inherit;
+}
+
+.ProfileAboutBlock {
+    height: inherit;
+}
+
+.profileSideContent {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.FlexBlockWrapper {
+    display: flex;
+}
+
+
+@media screen and (max-width: 600px) {
+    .content {
+        flex-wrap: wrap;
+    }
+    .ProfileAboutBlock {
+        width: 100%;
+    }
+    .profileInfo {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .ProfileAboutBlock, .ProfileFriendsBlock {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .FlexBlockWrapper {
+        flex-wrap: wrap;
+    }
+}
