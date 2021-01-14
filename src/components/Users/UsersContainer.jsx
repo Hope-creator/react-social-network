@@ -37,7 +37,6 @@ class UsersContainer extends React.Component {
             () => {
                 {
                     if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalUsersCount) {
-                        console.log("max users")
                         clearInterval(check);
                         window.onscroll = null;
                     }
@@ -49,8 +48,6 @@ class UsersContainer extends React.Component {
         return window.onscroll = () => {
             let currentScrollPos = window.pageYOffset;
             let maxScroll = document.body.scrollHeight - window.innerHeight;
-            console.log(currentScrollPos)
-            console.log(maxScroll)
             if (currentScrollPos + 15 >= maxScroll) this.onPageChange(this.props.currentPage + 1);
             if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalUsersCount) {
                 window.onscroll = null;

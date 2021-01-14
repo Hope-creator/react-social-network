@@ -8,7 +8,7 @@ const ProfilePhotos = (props) => {
     if (!props.friends) return <Preloader />;
     let friendsItems;
     if (props.friends) {
-        console.log(props.friends); friendsItems = props.friends.map(f =>{
+        friendsItems = props.friends.map(f =>{
         if (f){
             return <li key={f.id}>
                 <Link to={`/profile/${f.id}`}>

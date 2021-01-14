@@ -7,6 +7,7 @@ import UsersConainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
+import Registration from './components/Registration/Registration';
 import { connect, Provider } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/preloader/Preloader';
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Suspense fallback={<Preloader />}>
            <Switch>
             <Redirect exact from="/" to="/profile" />
+            <Route path="/join" render={(() => <Registration />)} />
             <Route path="/login" render={(() => <Login />)} />
             <Route path="/dialogs/:userId?" render={(() => <DialogsContainer />)} />
             <Route path="/profile/:userId?" render={(() => <ProfileContainer />)} />

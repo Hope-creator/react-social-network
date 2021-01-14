@@ -10,7 +10,6 @@ import s from './ProfileForms/ProfileForms.module.css'
 const ProfileContactForm = (props) => {
 
     let [currentForm, setCurrentForm] = useState('About')
-
     return (
         <div className={s.formWrap}>
             <div className={s.formArea}>

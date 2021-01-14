@@ -36,7 +36,6 @@ class FriendsContainer extends React.Component {
             () => {
                 {
                     if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalFriendsCount) {
-                        console.log("max friends")
                         clearInterval(check);
                         window.onscroll = null;
                     }
@@ -48,8 +47,6 @@ class FriendsContainer extends React.Component {
         return window.onscroll = () => {
             let currentScrollPos = window.pageYOffset;
             let maxScroll = document.body.scrollHeight - window.innerHeight;
-            console.log(this.props.currentPage)
-            console.log("scroll")
             if (currentScrollPos + 15 >= maxScroll) this.onPageChange(this.props.currentPage + 1);
             if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalFriendsCount) { console.log("max friends onscroll"); window.onscroll = null; }
         }

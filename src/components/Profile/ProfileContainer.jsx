@@ -51,6 +51,7 @@ class ProfileContainer extends React.Component {
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateStatus}
+        setEditMode={this.setEditMode.bind(this)}
         profileOwner = {!this.props.match.params.userId}
         savePhoto={this.props.savePhoto}
         setEditMode={this.setEditMode.bind(this)}

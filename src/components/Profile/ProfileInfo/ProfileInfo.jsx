@@ -6,7 +6,7 @@ import profilePicture from '../../../img/profilePic.png';
 
 
 const ProfileInfo = (props) => {
-
+    console.log(props)
     const newPhotoSelected = (e) => {
         props.savePhoto(e.target.files[0])
     }
