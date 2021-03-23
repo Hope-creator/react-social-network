@@ -7,7 +7,7 @@
 /uploads
 
 #secrets
-/utils/secrets
+/utils/secrets.json
 
 # misc
 .DS_Store
