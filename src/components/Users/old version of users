@@ -1,0 +1,79 @@
+/* props.setUsers([
+        {
+            id: 1,
+            fullName: 'Adrian D.',
+            friends: 372,
+            photos: 43,
+            videos: 3,
+            profilePicture: 'https://cdni.rt.com/russian/images/2020.05/article/5eb2582102e8bd09c60c321e.JPG',
+            commonFriends: [
+                {
+                    id: 6,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 7,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 8,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 9,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                }],
+            isFollowed: false
+        },
+        {
+            id: 2,
+            fullName: 'Dmitry D.',
+            friends: 372,
+            photos: 43,
+            videos: 3,
+            profilePicture: 'https://whatsism.com/uploads/posts/2018-07/1530545833_il2zmvzx9py.jpg',
+            commonFriends: [
+                {
+                    id: 6,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 7,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 8,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 9,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                }],
+            isFollowed: true
+        },
+        {
+            id: 3,
+            fullName: 'Cortney D.',
+            friends: 372,
+            photos: 43,
+            videos: 3,
+            profilePicture: 'https://cdni.rt.com/russian/images/2020.05/article/5eb2582102e8bd09c60c321e.JPG',
+            commonFriends: [
+                {
+                    id: 6,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 7,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 8,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                },
+                {
+                    id: 9,
+                    profilePicture: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+                }],
+            isFollowed: false
+        }])} */

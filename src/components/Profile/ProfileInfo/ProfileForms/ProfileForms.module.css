@@ -1,0 +1,58 @@
+.formWrap {
+    display: flex;
+}
+.formChangeBtn {
+    outline: none;
+    background-color: #4687FD;
+    padding: 15px;
+    width: 150px;
+    display: block;
+}
+
+
+.formsButton {
+    margin-left: auto;
+}
+
+.formArea {
+    margin-left: auto;
+    width: 300px;
+}
+
+.formInputText , textarea {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    padding: 3px;
+    resize: none;
+}
+
+
+.fieldWrap {
+    border: 1px solid #7B9095;
+    border-radius: 3px;
+    margin-top: 5px;
+    background-color: #4687FB;
+    padding: 2px;
+    box-shadow: 2px 2px 3px #7B9095;
+}
+.fieldWrap span {
+    display: block;
+}
+
+.submitBtn {
+    margin-top: 7px;
+    padding: 3px 15px;
+    cursor: pointer;
+}
+
+.submitError {
+    margin-top: 15px;
+    border: 2px solid red;
+}
+
+.submitErrorBlock {
+    border: 1px solid gray;
+    background-color: #FF7474;
+}

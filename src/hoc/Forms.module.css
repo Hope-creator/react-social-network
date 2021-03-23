@@ -1,0 +1,7 @@
+.formControl span {
+  color: red
+}
+
+.error {
+  outline: 2px solid red;
+}

@@ -1,0 +1,56 @@
+.header {
+    grid-area: h;
+    display: grid;
+    grid-template-areas: "hl hf hlog";
+    grid-template-columns: 150px 9fr 1fr;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    background-color: tomato;
+    
+  }
+
+.header_link {
+  grid-area: hl;
+  background-color: #4687ce;
+  height: 100%;
+}
+
+.header_features {
+  grid-area: hf;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.header a  {
+    font-size: 1.2rem;
+    color: white;
+    max-width: 100%;
+    display: block;
+    text-align: center;
+    line-height: 3.3rem;
+    width: 100%;
+    height: 101%;
+    text-decoration: none;
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+}
+
+.loginBlock {
+  grid-area: hlog;
+
+  background-color: blue;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    grid-template-columns: 90px 9fr 1fr;
+  }
+  .header a {
+    line-height: 2rem;
+  }
+}
