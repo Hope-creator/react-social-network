@@ -1,0 +1,51 @@
+.aboutBlockHeader {
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e2e9e6;
+  width: 100%;
+  height: 17%;
+  line-height: 1;
+}
+
+.aboutBlockContent {
+  box-sizing: border-box;
+  padding: 10px 15px;
+  width: 100%;
+  height: 83%;
+}
+
+.aboutBlockContent>ul>li {
+  margin-top: 10px;
+}
+
+.aboutContent{
+  display: flex;
+  
+}
+
+.aboutContent>span:first-child {
+  color: #a8a8a8;
+  width: 20%;
+}
+
+.aboutContent>span:last-child {
+  margin: 0 auto;
+  width: 50%;
+  word-break: break-word;
+}
+
+.aboutWrapContent {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.changeInfoBtn {
+  float: right;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+

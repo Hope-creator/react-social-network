@@ -1,0 +1,109 @@
+.flexWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+h4 {
+    line-height: 0;
+}
+
+.usersItem {
+    border: 1px solid #e6e6e6;
+    flex-basis: 49%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.profilePic {
+    display: inline;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.mediaHeader {
+    padding: 10px;
+}
+
+.mediaHeaderBody {
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+}
+
+.mediaHeaderBody span {
+    margin-left: 10px;
+}
+
+.mediaBody {
+    border-top: 1px solid #a0a0a0;
+    border-bottom: 1px solid #a0a0a0;
+    padding-left: 10px;
+}
+
+.mediaFooter {
+    text-align: center;
+    padding: 15px;
+}
+
+.mediaFooter button {
+    padding: 5px 10px;
+    background-color: #efefef;
+    border: 1px solid #e7e7e7;
+    cursor: pointer;
+    outline: none;
+}
+
+.mediaFooter button:hover {
+    background-color: #b3b3b3;
+}
+
+.mediaFooter button:active {
+    background-color: #838282;
+}
+
+.usersIcon::before {
+    content: "\f0c0";
+}
+
+span {
+    font-size: 0.8rem;
+}
+
+.footerPages {
+    text-align: center;
+}
+
+.selectedPage {
+    color:blue
+}
+
+.searchUsersForm {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.searchUsersInput {
+    
+}
+.searchUsersButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.searchUsersButton:hover {
+    color: #4687ce;
+}
+
+@media screen and (max-width: 600px) {
+    .flexWrapper {
+        flex-direction: column;
+    }
+}

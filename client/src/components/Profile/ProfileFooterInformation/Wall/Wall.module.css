@@ -1,0 +1,209 @@
+.wallContainer {
+    width: 100%;
+    background-color: white;
+    box-shadow: 2px 2px 3px #e6e6e6;
+}
+
+/* POST */
+
+.postFormHeader {
+    background-color: #4687ce;
+}
+
+.postFormHeader p {
+    line-height: 1;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+.postFormWrapper {
+    border: 1px solid #e6e6e6;
+}
+
+.wallPostHeader {
+    display: flex;
+    background-color: #4687ce;
+    max-height: 50px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.wallPostHeader a {
+    color: #fff;
+    line-height: 0.5;
+}
+
+.wallPostHeader a:hover {
+    text-decoration: underline;
+}
+
+.wallPostHeaderPhoto {
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.wallPostHeaderInfo {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wallPostContent {
+    padding: 15px;
+}
+
+.wallPostTextContent {
+    word-break: break-all;
+}
+
+.wallPostObjects {
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.wallPostPhotoObject , .wallPostVideoObject {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.wallPostSmallObject {
+    width: 24%;
+    height: 100%;
+    border: 1px solid transparent;
+    object-fit: cover;
+    outline: none;
+}
+
+/* modal window for fullscreen images*/
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    top: 0;
+    left: 0;
+    overflow: auto;
+    padding: 0 0;
+    z-index: 100;
+}
+
+.modal>img {
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    height: 100%;
+    object-fit: scale-down;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/*form*/
+
+.formPost {
+    margin-bottom: 10px;
+}
+
+.formPhoto, .formVideo {
+    position: relative;
+}
+
+.formPhoto:hover, .formVideo:hover {
+    color: #4687ce;
+    cursor: pointer;
+}
+
+.formPostMedia {
+    display: flex;
+}
+
+.formPostVideo {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.formFooter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.newsMediaInput {
+    display: none;
+}
+
+.mediaCount {
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: 0.6rem;
+    padding: 1px;
+    margin-left: 5px;
+}
+
+.formTextInput {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mediaInputError {
+    position: absolute;
+    background-color: #e6e6e6;
+    padding: 5px;
+}
+
+.mediaInputError:hover {
+    z-index: 100;
+}
+
+.postSubmitButton {
+    background-color: #4687ce;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #e6e6e6;
+    color: white;
+}
+
+.mediaInputError::before {
+    content: '';
+    border-color: transparent transparent #e6e6e6 transparent;
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+    margin-left: 3px;
+    top:-10px;
+    left: 0;
+}
+
+.postMediaClearButton {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+/*no post window*/
+.noPostWrapper {
+    height: 300px;
+}
+
+.noPostBody {
+    text-align: center;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: center;
+    color: #c1c1c1;
+}
+
+.noPostBody>i {
+    font-size: 72px;
+}
+
+/*---------------------------------------*/

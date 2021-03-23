@@ -1,0 +1,52 @@
+.friendsBlockHeader {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e9e6;
+    width: 100%;
+    height: 17%;
+    line-height: 1;
+  }
+
+.addFriendsLink {
+    float: right;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    cursor: pointer;
+}
+
+
+.friendsBlockContent {
+    height: 83%;
+}
+
+.friendsBlockContent>ul {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: 83%;
+    width: 100%;
+}
+
+.friendsGrid li {
+    height: 29%;
+    flex-basis: 20%;
+    margin-bottom: 5%;
+    padding: 2%;
+    text-align: center;
+}
+
+.friendsGrid li a img {
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.friendsGrid li a span {
+    word-break: break-word;
+    display: block;
+    text-align: center;
+}
+

@@ -1,0 +1,22 @@
+.messagesProfilePhoto {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.messagesProfile {
+    text-align: center;
+}
+
+.returnLink {
+    padding: 25px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #f3f3f3;
+}
+
+.returnLink:hover {
+    background-color: #dedfff;
+}

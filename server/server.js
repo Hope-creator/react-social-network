@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 
 // Serve static ressources in production
-let static = path.join(__dirname, "../demo-project/build")
+let static = path.join(__dirname, "../client/build")
 app.use(express.static(static));
 let staticUploads = path.join(__dirname, "/uploads")
 app.use("/uploads", express.static(staticUploads));
@@ -79,7 +79,7 @@ app.use("/api/news", require("./routes/news"));
 app.use("/api/messages", require("./routes/messages"));
 app.use("/api", require("./routes/index"));
 // Serve the build in production
-let index = path.join(__dirname, "../demo-project/build/index.html")
+let index = path.join(__dirname, "../client/build/index.html")
 app.get("*", (req, res) => {
     res.sendFile(index);
 });
