@@ -1,0 +1,42 @@
+{
+  "name": "demo-project-api-nodejs",
+  "version": "1.0.0",
+  "description": "demo-project api on nodejs",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "crypto-random-string": "^3.3.0",
+    "csurf": "^1.11.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.11.11",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.17",
+    "nodemon": "^2.0.7",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
+    "socket.io": "^3.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hope-creator/demo-project.git"
+  },
+  "author": "Hope-creator",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hope-creator/demo-project/issues"
+  },
+  "homepage": "https://github.com/Hope-creator/demo-project#readme"
+}
