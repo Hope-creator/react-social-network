@@ -26,11 +26,14 @@ require("./utils/db");
 
 // #Middleware
 app.use(compression());
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-},
-));
+//cors for local react app running
+if (port === 5000) {
+    app.use(cors({
+        origin: 'http://localhost:3000',
+        credentials: true
+    },
+    ));
+}
 app.use(express.json());
 app.use((req, res, next) => {
     res.locals.secrets = secrets;

@@ -1,7 +1,9 @@
 import * as axios from 'axios';
 
+const BASE_API_URL = '/api';
+
 const newInstance = axios.create({
-    baseURL: 'http://localhost:5000/api/',
+    baseURL: BASE_API_URL,
     withCredentials: true,
     xsrfCookieName: "mytoken",
     xsrfHeaderName: "csrf-token"
