@@ -24,13 +24,10 @@ module.exports = function(io) {
                     {
                         "unread": false
                     })
-                console.log(readConversation)
                 if (readConversation) {
                     try {
-                        console.log(_id)
                         const unreadConversations = await Conversation.find(
                             { $and: [{ "fromId": _id }, { "unread": true }] }).countDocuments();
-                            console.log(unreadConversations)
                         socket.emit("unreadConversations", unreadConversations)
                     }
                     catch (err) {
