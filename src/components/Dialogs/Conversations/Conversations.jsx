@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { WithGetOnScroll } from '../../../hoc/WithGetOnScroll';
 import ConversationItem from './ConversationItem/ConversationItem';
 import socket from '../../../socket';
+import NoConversation from './ConversationItem/NoConversation'
 
 const Conversations = (props) => {
 
@@ -73,10 +74,11 @@ const Conversations = (props) => {
         />
     })
 
-
     return (
         <div>
-           {conversationsItems}
+           {conversationsItems.length > 0 ?
+           conversationsItems :
+           <NoConversation />}
         </div>
     )
 }

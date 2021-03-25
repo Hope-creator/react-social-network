@@ -158,6 +158,30 @@
     animation-duration: 0.6s;
 }
 /*--------------------------------------*/
+
+/*no news window*/
+.noNewsWrapper {
+    height: 300px;
+    width: 100%;
+}
+
+.noNewsBody {
+    text-align: center;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: center;
+    color: #c1c1c1;
+}
+
+.noNewsBody>i {
+    font-size: 72px;
+}
+
+
+
 @media screen and (max-width: 600px) {
     .newsContentItem {
         flex: 1 0 100%;

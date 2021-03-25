@@ -3,7 +3,7 @@ import Preloader from '../common/preloader/Preloader';
 import s from './News.module.css';
 import { Link, NavLink } from 'react-router-dom';
 import NewsItem from './NewsItem';
-
+import NoNews from './NoNews';
 import profilePicture from '../../img/profilePic.png';
 
 
@@ -21,7 +21,6 @@ const News = (props) => {
             />
         </div>
         })
-
     
     return (
         <div>
@@ -37,10 +36,11 @@ const News = (props) => {
                         </div>
                     </div>
                 </div>
-                
             </div>
             <div className={s.newsContent}>
-                {newsContent}
+                {newsContent.length > 0 ?
+                newsContent :
+                <NoNews />}
             </div>
         </div>
     )
