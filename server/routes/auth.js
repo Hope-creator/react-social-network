@@ -252,11 +252,12 @@ router.get(
                 // CHANGE PORT IN PRODUCTION ON 5000 || ${req.get("host")}
                 // 3000 PORT FOR TESTING
 
+                // FOR REACT CLIENT 
+                // let redirectPath = `http://localhost:3000/verified`
 
-                let redirectPath = `http://localhost:3000/verified`
-                /*let redirectPath = `${req.protocol}://${req.get(
+                let redirectPath = `${req.protocol}://${req.get(
                     "host"
-                )}/verified`;*/
+                )}/verified`;
 
                 res.redirect(redirectPath);
             }

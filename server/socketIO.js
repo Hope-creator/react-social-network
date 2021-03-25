@@ -5,6 +5,7 @@ module.exports = function(io) {
     io.on('connection', async (socket) => {
         const _id = socket.handshake.auth._id
         socket.join(_id);
+        console.log("User connected", _id)
         try {
             const unreadConversations = await Conversation.find(
                 { $and: [{ "fromId": _id }, { "unread": true }] }).countDocuments();
