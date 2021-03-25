@@ -13,8 +13,10 @@ const AccountVerifiedSuccess = (props) => {
 
     const {updateUserStatusThunk} = props;
     //Timeout on verify
-    let timeout = setTimeout(()=> {setRedirectToProfile(true)}, 2500);
-
+    let timeout = setTimeout(()=> {
+        setRedirectToProfile(true);
+        window.location.reload();
+    }, 2500);
 
     //redirect state
     const [redirectTo, setRedirectTo] = useState(false);

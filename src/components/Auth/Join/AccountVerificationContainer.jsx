@@ -7,18 +7,29 @@ import AccountVerification from './AccountVerification';
 
 
 const AccountVerifiedContainer = (props) => {
-    //login form wrapper for testing <Form render/>
 
     const [sendingStatus, setSendingStatus] = useState("")
-    
+
     const onSubmit = () => {
         setSendingStatus("pending");
         props.getNewVerificationEmail()
-        .then(result=> result.success === true ? setSendingStatus("success") : setSendingStatus("error"))
+            .then(result => {
+                if (result.success) {
+                    setSendingStatus("success");
+                    props.setRegUrl(result.url)
+                } else {
+                    setSendingStatus("error")
+                }
+            }
+            )
     }
 
 
-return <AccountVerification onSubmit={onSubmit} sendingStatus={sendingStatus} />
+    return <AccountVerification
+        regUrl={props.regUrl}
+        setRegUrl={props.setRegUrl}
+        onSubmit={onSubmit}
+        sendingStatus={sendingStatus} />
 }
 
 

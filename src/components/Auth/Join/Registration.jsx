@@ -14,7 +14,7 @@ import AccountVerificationContainer from './AccountVerificationContainer';
 const RegistationFormWrap = (props) => {
     //reg form wrapper for testing <Form render/>
 
-    const [disableSubmitButton, setDisableSubmitButton] = useState(false)
+    const [disableSubmitButton, setDisableSubmitButton] = useState(false);
 
     const onSubmit = async values => {
         let errors = [];
@@ -25,7 +25,8 @@ const RegistationFormWrap = (props) => {
         ).then(
             result => {
                 if (result.success) {
-                    props.setOverlay(true)
+                    props.setOverlay(true);
+                    props.setRegUrl(result.url)
                 }
                 else {
                     setDisableSubmitButton(false);
@@ -87,8 +88,8 @@ const RegistationFormWrap = (props) => {
                         {submitError && <div className={s.submitError}>{submitError}</div>}
                         <div className={s.checkBox}>
                             <Field
-                            name="acceptance"
-                            component="input" type="checkbox" value="accepted" />
+                                name="acceptance"
+                                component="input" type="checkbox" value="accepted" />
                             <span>Accept of Terms of Service</span>
                         </div>
                         <button disabled={disableSubmitButton} className={disableSubmitButton ? s.submitBtn + ' ' + s.disabledButton : s.submitBtn} type="submit"> <span className={s.submitBtnText}>Join</span></button>
@@ -102,15 +103,19 @@ const RegistationFormWrap = (props) => {
 const Registration = (props) => {
 
     const [showOverlay, setOverlay] = useState(false);
+    const [regUrl, setRegUrl] = useState("");
 
     // redirect if no authorization
 
     return props.isAuth ? <Redirect to="/profile" />
-        : showOverlay ? (<AccountVerificationContainer />) : (<div className={s.loginWrapper}>
+        : showOverlay ? (<AccountVerificationContainer regUrl={regUrl} setRegUrl={setRegUrl} />) : (<div className={s.loginWrapper}>
             <h1>
                 Sign up
         </h1>
-            <RegistationFormWrap setOverlay={setOverlay} setUserRegThunk={props.setUserRegThunk}
+            <RegistationFormWrap
+                setRegUrl={setRegUrl}
+                setOverlay={setOverlay}
+                setUserRegThunk={props.setUserRegThunk}
                 captchaUrl={props.captchaUrl}
                 authFailed={props.authFailed}
                 authErrorMessage={props.authErrorMessage}
