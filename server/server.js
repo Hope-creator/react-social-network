@@ -8,12 +8,12 @@ const csurf = require("csurf");
 const path = require("path");
 const io = require('socket.io')(http, {
     cors: {
-        origin: "http://localhost:5000",
+        origin: "http://localhost:3000",
     },
 });
 
 let secrets, port;
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
     secrets = process.env.config;
     port = process.env.PORT;
 } else {
