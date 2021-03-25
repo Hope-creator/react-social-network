@@ -9,7 +9,6 @@ const emailService = require("../utils/nodemailer");
 const authenticateTokenWhilePending = require("../utils/middleware/checkAuthWhilePending");
 const authenticateToken = require("../utils/middleware/checkAuth");
 const InitToken = require("../utils/middleware/checkAuthInit");
-const fs = require('fs');
 
 
 
@@ -151,7 +150,6 @@ router.post("/register", async (req, res) => {
                 });
                 await newCode.save();
                 const url = `${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}`;
-                fs.appendFileSync("regurls.txt", `\n ${url}`);
                 const data = {
                     from: `doe.john123@mail.ru`,
                     to: user.email,
@@ -166,6 +164,7 @@ router.post("/register", async (req, res) => {
                     userRole: user.role,
                     userId: user._id,
                     userStatus: user.status,
+                    url
                 });
             }
         } catch (err) {
@@ -217,9 +216,7 @@ router.get(
                     html: `<p>Please use the following link within the next 10 minutes to activate your account on YOUR APP: <strong><a href="${url}" target="_blank">Email bestätigen</a></strong></p>`,
                 };
                 await emailService.sendMail(data);
-                fs.appendFileSync("NEWregurls.txt", `\n ${url}`);
-
-                res.json({ success: true });
+                res.json({ success: true, url });
             }
         } catch (err) {
             console.log("Error on /api/auth/get-activation-email: ", err);
@@ -256,7 +253,10 @@ router.get(
                 // 3000 PORT FOR TESTING
 
 
-                let redirectPath = `${req.protocol}://localhost:3000/verified`;
+                let redirectPath = `http://localhost:3000/verified`
+                /*let redirectPath = `${req.protocol}://${req.get(
+                    "host"
+                )}/verified`;*/
 
                 res.redirect(redirectPath);
             }
