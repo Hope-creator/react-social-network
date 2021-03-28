@@ -26,7 +26,7 @@ let initialState = {
     ownerProfile: null,
     conversationsProfiles: [],
     conversationsCount: 10,
-    messagesCount: 10,
+    messagesCount:30,
     currentConversationProfile: null,
     currentPageConversations: 1,
     pageSizeConversations: 10,
@@ -104,7 +104,8 @@ const dialogsReducer = (state = initialState, action) => {
         case CLEAR_MESSAGES:
             return {
                 ...state,
-                messages: []
+                messages: [],
+                messagesCount: 10
             }
 
         case SET_MESSAGES_COUNT:
