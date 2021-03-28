@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import NewsContainer from './components/News/NewsContainer';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import UsersConainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -13,21 +12,25 @@ import { initializeApp } from './redux/app-reducer';
 import { unreadConversationsSubcribeThunk } from './redux/auth-reducer'
 import Preloader from './components/common/preloader/Preloader';
 import store from './redux/redux-store';
-import FriendsContainer from './components/Friends/FriendsContainer';
 import AccountVerifiedSuccess from './components/Auth/Join/AccountVerifiedSuccess';
 import ResetPassword from './components/Auth/ResetPassword';
 import socket from './socket';
 import { withCookies } from 'react-cookie';
+import NoMatch from './utils/utils-components/NoMatch';
+import ErrorBoundary from './utils/utils-components/ErrorBoundary';
 
 
 
 
 //lazy load
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const NewsContainer = React.lazy(() => import('./components/News/NewsContainer'));
+const FriendsContainer = React.lazy(() => import('./components/Friends/FriendsContainer'));
+
 
 
 class App extends React.Component {
-  
+
   constructor(props) {
     super(props);
     const { cookies } = props;
@@ -57,16 +60,15 @@ class App extends React.Component {
   }
 
   changeVisibleNav = () => {
-    this.setState({isNavHidden: !this.state.isNavHidden})
-}
+    this.setState({ isNavHidden: !this.state.isNavHidden })
+  }
 
   render() {
     return !this.props.initialized ? <Preloader /> :
-        /* not working with initialized on github */(
-        <div className="app-wrapper">
-          <HeaderContainer 
-          changeVisibleNav={this.changeVisibleNav}
-          isNavHidden={this.state.isNavHidden}
+        (<div className="app-wrapper">
+          <HeaderContainer
+            changeVisibleNav={this.changeVisibleNav}
+            isNavHidden={this.state.isNavHidden}
           />
           <Navbar
             unreadConversations={this.props.unreadConversations}
@@ -76,7 +78,7 @@ class App extends React.Component {
           <div className="app-wrapper-content">
             <Suspense fallback={<Preloader />}>
               <Switch>
-                {/*<<Redirect exact from="/" to="/profile" />*/}
+                <Redirect exact from="/" to="/profile" />
                 <Route path="/join" render={(() => <Registration />)} />
                 <Route path="/reset" render={(() => < ResetPassword />)} />
                 <Route path="/verified" render={(() => <AccountVerifiedSuccess />)} />
@@ -86,7 +88,7 @@ class App extends React.Component {
                 <Route path="/news" render={(() => <NewsContainer />)} />
                 <Route path="/friends" render={(() => <FriendsContainer />)} />
                 <Route path="/users" render={(() => <UsersConainer />)} />
-                {/*<Redirect to="/profile" />*/}
+                <Route render={(() => <NoMatch />)} />
               </Switch>
             </Suspense>
           </div>
@@ -102,13 +104,15 @@ const mapStateToProps = (state) => ({
 })
 
 const AppContainer = connect(mapStateToProps,
-  { initializeApp, unreadConversationsSubcribeThunk })( withCookies(App));
+  { initializeApp, unreadConversationsSubcribeThunk })(withCookies(App));
 
 const MainApp = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <AppContainer />
+        <ErrorBoundary>
+          <AppContainer />
+        </ErrorBoundary>
       </Provider>
     </BrowserRouter>
   )
