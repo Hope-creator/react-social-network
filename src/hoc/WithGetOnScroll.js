@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const WithGetOnScroll = (WrappedComponent) => {
+export const withGetOnScroll = (WrappedComponent) => {
     return class extends React.Component {
         constructor(props) {
             super(props)
@@ -18,26 +18,24 @@ export const WithGetOnScroll = (WrappedComponent) => {
         componentWillUnmount() {
             window.onscroll = null
             this.props.setCurrentPage(1);
-            clearInterval(this.state.interval)
+            clearInterval(this.interval)
         }
 
         getOnScroll = () => {
             let check = setInterval(
                 () => {
-                        if (this.state.unmounting) clearInterval(check)
                         if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalCount) {
                             clearInterval(check);
                             window.onscroll = null;
                         }
-                        if (window.pageYOffset + 15 >= document.body.scrollHeight - window.innerHeight) this.onPageChange(this.props.currentPage + 1);
+                        if (window.pageYOffset + 100 >= document.body.scrollHeight - window.innerHeight) this.onPageChange(this.props.currentPage + 1);
                         else clearInterval(check);
                 }, 1000);
-            this.setState({interval: check})
-    
+            this.interval = check;
             return window.onscroll = () => {
                 let currentScrollPos = window.pageYOffset;
                 let maxScroll = document.body.scrollHeight - window.innerHeight;
-                if (currentScrollPos + 15 >= maxScroll) this.onPageChange(this.props.currentPage + 1);
+                if (currentScrollPos + 100 >= maxScroll) this.onPageChange(this.props.currentPage + 1);
                 if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalCount) {
                     window.onscroll = null;
                 }
@@ -49,7 +47,7 @@ export const WithGetOnScroll = (WrappedComponent) => {
                 this.props.setCurrentPage(pageNumber);
                 this.setFetchingTrue()
                 await this.props.request(pageNumber, this.props.pageSize, this.props.searchName, this.props.ownerId)
-                .then(res => this.setFetchingFalse())
+                this.setFetchingFalse()
             }
         }
 
