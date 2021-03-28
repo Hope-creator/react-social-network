@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { followUnfollowThunk, setCurrentPage, setUsersCount, toggleFollowingProgress, requestUsers, clearUsers, setSearchUsersName } from '../../redux/users-reducer';
 import Preloader from '../common/preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers, getSearchUsersName } from '../../redux/users-selectors';
-import {WithGetOnScroll} from '../../hoc/WithGetOnScroll'
+import {withGetOnScroll} from '../../hoc/withGetOnScroll'
 
 class UsersContainer extends React.Component {
 
@@ -60,7 +60,7 @@ class UsersContainer extends React.Component {
     }
 }
 
-const UsersContainerWithScroll = WithGetOnScroll(UsersContainer)
+const UsersContainerWithScroll = withGetOnScroll(UsersContainer)
 
 /*let mapStateToProps = (state) => {
     return {

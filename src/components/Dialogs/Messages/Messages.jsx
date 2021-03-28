@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { WithGetOnScroll } from '../../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../../hoc/withGetOnScroll';
 import Message from './Message/Message';
 import AddMessageForm from './Message/AddMessageForm';
 import profilePicture from '../../../img/profilePic.png'
@@ -80,6 +80,6 @@ const Messages = (props) => {
     )
 }
 
-const MessagesWithGetOnScroll = WithGetOnScroll(Messages)
+const MessagesWithGetOnScroll = withGetOnScroll(Messages)
 
 export default MessagesWithGetOnScroll;

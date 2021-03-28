@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import News from './News';
 import { getNews, getProfile,setCurrentPageNews, getNewsProfiles, clearNewsProfiles, clearNews } from '../../redux/news-reducer';
-import { WithGetOnScroll } from '../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../hoc/withGetOnScroll';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
@@ -63,7 +63,7 @@ const NewsContainer = ({profile, userId, newsItems,
     )
 }
 
-const NewsContainerWithGetOnScroll = WithGetOnScroll(NewsContainer)
+const NewsContainerWithGetOnScroll = withGetOnScroll(NewsContainer)
 
 
 let mapStateToProps = (state) => {

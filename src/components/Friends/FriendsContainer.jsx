@@ -4,7 +4,7 @@ import { setCurrentPage, setFriendsCount, unfollowThunk, toggleFollowingProgress
 import Preloader from '../common/preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getFriends, getTotalFriendsCount, getSearchFriendsName } from '../../redux/friends-selectors';
 import Friends from './Friends';
-import { WithGetOnScroll } from '../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../hoc/withGetOnScroll';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
@@ -61,7 +61,7 @@ class FriendsContainer extends React.Component {
     }
 }
 
-const FriendsContainerWithGetOnScroll = WithGetOnScroll(FriendsContainer)
+const FriendsContainerWithGetOnScroll = withGetOnScroll(FriendsContainer)
 
 /*let mapStateToProps = (state) => {
     return {

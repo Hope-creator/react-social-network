@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { WithGetOnScroll } from '../../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../../hoc/withGetOnScroll';
 import ConversationItem from './ConversationItem/ConversationItem';
 import socket from '../../../socket';
 import NoConversation from './ConversationItem/NoConversation'
@@ -83,6 +83,6 @@ const Conversations = (props) => {
     )
 }
 
-const ConversationsWithGetOnScroll = WithGetOnScroll(Conversations)
+const ConversationsWithGetOnScroll = withGetOnScroll(Conversations)
 
 export default ConversationsWithGetOnScroll;

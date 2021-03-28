@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import s from './Wall.module.css';
 import Post from './Post'
 import AddPostForm from './AddPostForm';
-import { WithGetOnScroll } from '../../../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../../../hoc/withGetOnScroll';
 import NoPost from './NoPosts';
 
 const WallContainer = ({
@@ -40,6 +40,6 @@ const WallContainer = ({
     </div>
 }
 
-const WallContainerWithGetOnScroll = WithGetOnScroll(WallContainer)
+const WallContainerWithGetOnScroll = withGetOnScroll(WallContainer)
 
 export default WallContainerWithGetOnScroll;

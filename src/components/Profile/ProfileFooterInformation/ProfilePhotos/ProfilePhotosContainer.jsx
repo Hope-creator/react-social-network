@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { WithGetOnScroll } from '../../../../hoc/WithGetOnScroll';
+import { withGetOnScroll } from '../../../../hoc/withGetOnScroll';
 import ProfilePhotos from './ProfilePhotos';
 import s from './ProfilePhotos.module.css'
 
@@ -30,6 +30,6 @@ let ProfilePhotosContainer = (props) => {
     )
 }
 
-const ProfilePhotosWithGetOnScroll = WithGetOnScroll(ProfilePhotosContainer)
+const ProfilePhotosWithGetOnScroll = withGetOnScroll(ProfilePhotosContainer)
 
 export default ProfilePhotosWithGetOnScroll;
