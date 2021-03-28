@@ -70,7 +70,7 @@ let DialogsContainer = (props) => {
             request={props.getMessages}
             searchName={currentConversation}
             pageSize={props.pageSizeMessages}
-            totalCount={props.conversationsCount}
+            totalCount={props.messagesCount}
             setCurrentConversation={setCurrentConversation}
             ownerProfile={props.ownerProfile}
             currentConversationProfile={props.currentConversationProfile}
