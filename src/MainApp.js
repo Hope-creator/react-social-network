@@ -17,7 +17,7 @@ import ResetPassword from './components/Auth/ResetPassword';
 import socket from './socket';
 import { withCookies } from 'react-cookie';
 import NoMatch from './utils/utils-components/NoMatch';
-import ErrorBoundary from './utils/utils-components/ErrorBoundary';
+import ErrorBoundary from './components/utils-components/ErrorBoundary';
 
 
 

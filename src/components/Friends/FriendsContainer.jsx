@@ -10,8 +10,6 @@ import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 class FriendsContainer extends React.Component {
 
-
-
     componentDidMount() {
         this.props.request(1, this.props.pageSize, '' ,this.props.ownerId);
         this.props.getOnScroll()
@@ -62,17 +60,6 @@ class FriendsContainer extends React.Component {
 }
 
 const FriendsContainerWithGetOnScroll = withGetOnScroll(FriendsContainer)
-
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 
 let mapStateToProps = (state) => {
     return {
