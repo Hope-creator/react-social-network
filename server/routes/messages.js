@@ -6,44 +6,6 @@ const { Message } = require("../utils/models/message");
 const multer = require("multer");
 const fs = require("fs");
 
-/*const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, `./uploads/messages/${req.userId}`);
-    },
-    filename: (req, file, cb) => {
-        const date = Date.now();
-        cb(null, date + "__" + file.originalname);
-    }
-});
-
-const fileFilter = (req, file, cb) => {
-    // reject a file
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' ||
-        file.mimetype === 'video/mp4' || file.mimetype === 'video/webm' ||
-        file.mimetype === 'video/mpeg' || file.mimetype === 'video/3gpp') {
-        cb(null, true)
-    } else {
-        cb(console.log("Wrong type"), false)
-    }
-}
-
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 2000
-    },
-    fileFilter: fileFilter
-});
-
-const createUserFolder = (req,res, next) => {
-    const id = req.userId;
-    if (!fs.existsSync(`./uploads/posts/${id}`)){
-        fs.mkdirSync(`./uploads/posts/${id}`);
-    }
-    next();
-}*/
-
-
 // #route : GET api/conversations
 // #desc : Getting user conversations
 // #access : Private
