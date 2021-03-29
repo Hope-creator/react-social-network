@@ -213,6 +213,8 @@ export const getProfile = (id) => async (dispatch) => {
     if (response.data.success) {
         dispatch(setUserProfile(response.data.profile));
         dispatch(setStatus(response.data.profile.profile.status))
+    } else {
+        return response.data.Error || response.data.errors
     }
 }
 
@@ -251,15 +253,11 @@ export const savePhoto = (file) => async (dispatch) => {
 }
 
 export const updateProfile = (profile) => async (dispatch) => {
-    try {
         let response = await newProfileAPI.updateProfile(profile);
         if (response.data.success) {
             dispatch(setUserProfile(response.data.user));
             return "success";
-        }
-        else { return response.data.messages }
-    }
-    catch (err) { console.log(err) }
+        } else { return response.data.messages }
 }
 
 export const getFriends = (id) => async (dispatch) => {

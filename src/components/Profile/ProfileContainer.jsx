@@ -16,6 +16,7 @@ import { Redirect, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import ProfileContactForm from './ProfileInfo/ProfileChangeForm';
 import ProfileHeaderInformation from './ProfileInfo/ProfileHeaderInformation';
+import NoMatch from '../common/NoMatch/NoMatch';
 
 
 class ProfileContainer extends React.Component {
@@ -31,7 +32,9 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = this.props.id
         }
-        this.props.getProfile(userId);
+        this.props.getProfile(userId).then(res=>{
+            if(res !== undefined) this.setState({error: true})
+        });
         this.props.getFriends(userId);
         this.props.setWallCount(null);
         this.props.setPhotoslCount(null);
@@ -52,7 +55,10 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) this.refreshProfile();
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.setState({error: false})
+            this.refreshProfile();
+        }
         if (this.props.profile !== prevProps.profile) this.isProfileOwner()
     }
 
@@ -67,6 +73,9 @@ class ProfileContainer extends React.Component {
 
 
     render() {
+
+        if(this.state.error) return <NoMatch />
+
         return (!this.props.match.params.userId && !this.props.isAuth
             ? <Redirect to="/login" />
             : this.state.editMode ?
