@@ -5,6 +5,7 @@
     background-color: #212121;
     position: fixed;
     padding-top: 54px;
+    overflow-y: auto;
     z-index: 1;
 }
 
