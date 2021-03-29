@@ -10,8 +10,7 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.users.length === 0 &&
-            this.props.request(1, this.props.pageSize);
-
+            this.props.request(1, this.props.pageSize, this.props.searchName);
         this.props.getOnScroll()
     }
 
@@ -61,17 +60,6 @@ class UsersContainer extends React.Component {
 }
 
 const UsersContainerWithScroll = withGetOnScroll(UsersContainer)
-
-/*let mapStateToProps = (state) => {
-    return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
-    }
-}*/
 
 let mapStateToProps = (state) => {
     return {

@@ -6,7 +6,7 @@ const NoConversation = () => {
     return (
         <div className={s.noConversationWrapper}>
         <div className={s.noConversationBody}>
-            <i class="far fa-envelope"></i>
+            <i className="far fa-envelope"></i>
             <div>You don't have any conversations yet</div>
             </div>
     </div>

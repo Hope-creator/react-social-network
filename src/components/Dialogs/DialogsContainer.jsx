@@ -39,11 +39,6 @@ let DialogsContainer = (props) => {
         getOwnerProfile(ownerId)
     }, [ownerId, getOwnerProfile])
 
-    //fetch messages
-    /*useEffect(()=> {
-        props.getMessages(1, 10, currentConversation)
-    },[])*/
-
     //fetch current conversation profile
     useEffect(()=> {
         if(currentConversation) {

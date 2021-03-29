@@ -16,8 +16,8 @@ import AccountVerifiedSuccess from './components/Auth/Join/AccountVerifiedSucces
 import ResetPassword from './components/Auth/ResetPassword';
 import socket from './socket';
 import { withCookies } from 'react-cookie';
-import NoMatch from './utils/utils-components/NoMatch';
-import ErrorBoundary from './components/utils-components/ErrorBoundary';
+import NoMatch from './components/common/NoMatch/NoMatch';
+import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary';
 
 
 
