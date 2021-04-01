@@ -3,8 +3,9 @@ import React from 'react';
 export const withGetOnScroll = (WrappedComponent) => {
     return class extends React.Component {
         constructor(props) {
-            super(props)
-            this.state = {fetching: false}
+            super(props);
+            this.state = {fetching: false};
+            this.mounted = React.createRef();
         }
 
         setFetchingTrue = () => {
@@ -14,14 +15,21 @@ export const withGetOnScroll = (WrappedComponent) => {
         setFetchingFalse = () => {
             this.setState({fetching: false})
         }
-        
+
+        componentDidMount() {
+            this.mounted.current = true;
+        }
+
+       
         componentWillUnmount() {
+            this.mounted.current = false;
             window.onscroll = null
             this.props.setCurrentPage(1);
             clearInterval(this.interval)
         }
 
         getOnScroll = () => {
+            if(this.mounted.current){
             let check = setInterval(
                 () => {
                         if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalCount) {
@@ -39,15 +47,15 @@ export const withGetOnScroll = (WrappedComponent) => {
                 if (Math.ceil(this.props.currentPage * this.props.pageSize) > this.props.totalCount) {
                     window.onscroll = null;
                 }
-            }
+            }}
         }
 
         onPageChange = async(pageNumber) => {
             if(!this.state.fetching) {
                 this.props.setCurrentPage(pageNumber);
-                this.setFetchingTrue()
+                if(this.mounted.current) this.setFetchingTrue();
                 await this.props.request(pageNumber, this.props.pageSize, this.props.searchName, this.props.ownerId)
-                this.setFetchingFalse()
+                if(this.mounted.current) this.setFetchingFalse();
             }
         }
 
