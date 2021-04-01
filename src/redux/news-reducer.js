@@ -65,7 +65,7 @@ const newsReducer = (state = initialState, action) => {
                 text: action.text,
                 attachments: action.attachments
             }],
-            lastAttachemtId: state.lastAttachemtId -1
+            lastAttachemtId: state.lastAttachemtId - 1
         }
 
         default: return state;
@@ -112,26 +112,41 @@ export const clearNewsProfiles = () => ({
 
 // thunks
 export const getProfile = (id) => async (dispatch) => {
-    const response = await newProfileAPI.getProfile(id);
-    if(response.data.success) dispatch(setProfile(response.data.profile));
+    try {
+        const response = await newProfileAPI.getProfile(id);
+        if (response && response.data.success) dispatch(setProfile(response.data.profile));
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 export const getNewsProfiles = (id) => async (dispatch) => {
-    const response = await newProfileAPI.getProfile(id);
-    if(response.data.success) {
-        dispatch(setNewsProfiles(response.data.profile));
-        return "Success"
+    try {
+        const response = await newProfileAPI.getProfile(id);
+        if (response && response.data.success) {
+            dispatch(setNewsProfiles(response.data.profile));
+            return "Success"
+        }
+        else {
+            return "Failed"
+        }
     }
-    else {
-        return "Failed"
+    catch (e) {
+        console.log(e)
     }
 }
 
-export const getNews = (currentPage, pageSize)  => async (dispatch)=> {
-    const response = await newNewsAPI.getNews(currentPage, pageSize);
-    if(response.data.success) {
-        dispatch(setNews(response.data.newsItems));
-        dispatch(setNewsCount(response.data.totalCount))
+export const getNews = (currentPage, pageSize) => async dispatch => {
+    try {
+        const response = await newNewsAPI.getNews(currentPage, pageSize)
+        if (response && response.data.success) {
+            dispatch(setNews(response.data.newsItems));
+            dispatch(setNewsCount(response.data.totalCount))
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 

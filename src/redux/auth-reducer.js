@@ -92,21 +92,33 @@ const setUnreadConvertastion = (unreadConversations) => ({
 })
 
 export const initUser = () => async (dispatch) => {
-    const response = await newAuthAPI.initUser()
-    if (response.data.success) dispatch(setUser(response.data.userId,
+    try{
+        const response = await newAuthAPI.initUser()
+    if (response &&response.data.success) dispatch(setUser(response.data.userId,
         response.data.userRole,
         response.data.userStatus,
         true))
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
 
 export const getNewVerificationEmail = () => async (dispatch) => {
-    const response = await newAuthAPI.getNewVerificationEmail()
-    return response.data;
+    try {
+    const response = await newAuthAPI.getNewVerificationEmail();
+    if(response && response.data)  return response.data;
+
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
 
 export const authLoginThunk = (email, password) => async (dispatch) => {
-    const response = await newAuthAPI.authLogin(email, password);
-    if (response.data.success) {
+    try{
+        const response = await newAuthAPI.authLogin(email, password);
+    if (response && response.data.success) {
         dispatch(setUser(response.data.userId,
             response.data.userRole,
             response.data.userStatus,
@@ -116,23 +128,42 @@ export const authLoginThunk = (email, password) => async (dispatch) => {
     else {
         return response.data
     }
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
 
 export const authLogoutThunk = () => async (dispatch) => {
-    const response = await newAuthAPI.logout();
-    if (response.data.success) {
+    try{
+        const response = await newAuthAPI.logout();
+    if (response && response.data.success) {
         dispatch(setUser(null, null, null, false));
+    }
+    }
+    catch(e) {
+        console.log(e)
     }
 }
 
 export const resetPasswordGetCode = (email) => async (dispatch) => {
-    const response = await newAuthAPI.resetPasswordGetCode(email);
-    return response.data;
+    try{
+        const response = await newAuthAPI.resetPasswordGetCode(email);
+    if(response && response.data)return response.data;
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
 
 export const resetPasswordVerifyCode = (email, password, password2, code) => async (dispatch) => {
-    const response = await newAuthAPI.resetPasswordVerifyCode(email, password, password2, code);
-    return response.data;
+    try{
+        const response = await newAuthAPI.resetPasswordVerifyCode(email, password, password2, code);
+    if(response && response.data)return response.data;
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
 
 export const setUserRegThunk = (name, email, password, password2, acceptance) => async (dispatch) => {

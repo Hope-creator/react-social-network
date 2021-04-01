@@ -1,4 +1,4 @@
-import { newNewsAPI, newProfileAPI, newUsersAPI} from "../api/api";
+import { newNewsAPI, newProfileAPI, newUsersAPI } from "../api/api";
 
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
@@ -207,75 +207,120 @@ export const clearProfilePhotos = () => ({
 })
 
 //---------------------------------------------------//
-//------------------------------MIDDLEWARES--------------------------//
+//------------------------------Thunks--------------------------//
 export const getProfile = (id) => async (dispatch) => {
-    let response = await newProfileAPI.getProfile(id)
-    if (response.data.success) {
-        dispatch(setUserProfile(response.data.profile));
-        dispatch(setStatus(response.data.profile.profile.status))
-    } else {
-        return response.data.Error || response.data.errors
+    try {
+        let response = await newProfileAPI.getProfile(id)
+        if (response && response.data.success) {
+            dispatch(setUserProfile(response.data.profile));
+            dispatch(setStatus(response.data.profile.profile.status))
+        } else {
+            return response.data.Error || response.data.errors
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const getPosts = (currentPage, pageSize, id) => async (dispatch) => {
-    let response = await newProfileAPI.getPosts(id, currentPage, pageSize);
-    if (response.data.success) {
-        dispatch(setWallPosts(response.data.posts));
-        dispatch(setWallCount(response.data.postsCount))
+    try {
+        let response = await newProfileAPI.getPosts(id, currentPage, pageSize);
+        if (response && response.data.success) {
+            dispatch(setWallPosts(response.data.posts));
+            dispatch(setWallCount(response.data.postsCount))
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const getPhotos = (currentPage, pageSize, id) => async (dispatch) => {
-    let response = await newProfileAPI.getPhotos(id, currentPage, pageSize);
-    if (response.data.success) {
-        dispatch(setProfilePhotos(response.data.profilePhotos));
-        dispatch(setPhotoslCount(response.data.photosCount))
+    try {
+        let response = await newProfileAPI.getPhotos(id, currentPage, pageSize);
+        if (response && response.data.success) {
+            dispatch(setProfilePhotos(response.data.profilePhotos));
+            dispatch(setPhotoslCount(response.data.photosCount))
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 
 }
 
 
 export const updateStatus = (newStatus) => async (dispatch) => {
-    let response = await newProfileAPI.updateStatus(newStatus)
-    if (response.data.success) {
-        dispatch(setStatus(response.data.user.profile.status));
+    try {
+        let response = await newProfileAPI.updateStatus(newStatus)
+        if (response && response.data.success) {
+            dispatch(setStatus(response.data.user.profile.status));
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const savePhoto = (file) => async (dispatch) => {
-    let formData = new FormData();
-    formData.append('profilePicture', file);
-    let response = await newProfileAPI.updatePhoto(formData);
-    if (response.data.success) {
-        dispatch(savePhotoSuccess(response.data.user.profile.profilePicture))
+    try {
+        let formData = new FormData();
+        formData.append('profilePicture', file);
+        let response = await newProfileAPI.updatePhoto(formData);
+        if (response && response.data.success) {
+            dispatch(savePhotoSuccess(response.data.user.profile.profilePicture))
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const updateProfile = (profile) => async (dispatch) => {
+    try {
         let response = await newProfileAPI.updateProfile(profile);
-        if (response.data.success) {
+        if (response && response.data.success) {
             dispatch(setUserProfile(response.data.user));
             return "success";
         } else { return response.data.messages }
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 export const getFriends = (id) => async (dispatch) => {
-    let response = await newUsersAPI.getFriends(id, true);
-    if (response.data.success) dispatch(getRandomFriendSuccess(response.data.randomFriends));
+    try {
+        let response = await newUsersAPI.getFriends(id, true);
+        if (response && response.data.success) dispatch(getRandomFriendSuccess(response.data.randomFriends));
+    }
+    catch (e) {
+        console.log(e)
+    }
 
 }
 
 
 
 export const addNewPostThunk = (data) => async (dispatch) => {
-    const response = await newNewsAPI.addNewPost(data);
-    if (response.data.success) dispatch(setNewPost(response.data.post))
+    try {
+        const response = await newNewsAPI.addNewPost(data);
+        if (response && response.data.success) dispatch(setNewPost(response.data.post))
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 export const addNewPhotosThunk = (data) => async (dispatch) => {
-    const response = await newProfileAPI.addNewPhotos(data);
-    if (response.data.success) dispatch(setNewPhotos(response.data.savedPhotos))
+    try {
+        const response = await newProfileAPI.addNewPhotos(data);
+        if (response && response.data.success) dispatch(setNewPhotos(response.data.savedPhotos))
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 //---------------------------------------------------//

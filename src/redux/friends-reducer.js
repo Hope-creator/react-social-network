@@ -8,6 +8,7 @@ const SET_CURRENT_PAGE_FRIENDS = 'SET_CURRENT_PAGE_FRIENDS';
 const TOGGLE_IS_FETCHING_FRIENDS = 'TOGGLE_IS_FETCHING_FRIENDS';
 const TOGGLE_IS_FOLLOWING_IN_PROGRESS_FRIENDS = 'TOGGLE_IS_FOLLOWING_IN_PROGRESS_FRIENDS';
 const SET_SEARCH_FRIENDS_NAME = 'SET_SEARCH_FRIENDS_NAME';
+const CLEAR_ALL_FRIENDS_STATE = 'CLEAR_ALL_FRIENDS_STATE';
 
 let initialState = {
     friends: [
@@ -56,6 +57,9 @@ const friendsReducer = (state = initialState, action) => {
                     : state.followingInProgressFriends.filter(id => id !== action.userId)
             }
 
+        case CLEAR_ALL_FRIENDS_STATE:
+            return initialState
+
         default: return state;
     }
 }
@@ -71,6 +75,10 @@ export const unfollowSuccess = (userId) => ({
 export const setFriends = (friends) => ({
     type: SET_FRIENDS,
     friends
+})
+
+export const clearAllFriendsState = () => ({
+    type: CLEAR_ALL_FRIENDS_STATE
 })
 
 export const clearFriends = () => ({
@@ -105,23 +113,31 @@ export const setSearchFriendsName = (searchName) => ({
 
 // thunks
 export const requestFriends = (currentPage, pageSize, nameFilter, userId) => async (dispatch) => {
-    dispatch(toggleIsFetching(true))
-    let response = await newUsersAPI.getUsers(currentPage, pageSize, nameFilter, userId)
-    if(response.data.success) {
-    dispatch(setFriends(response.data.items))
-    dispatch(setFriendsCount(response.data.totalCount))
+    dispatch(toggleIsFetching(true));
+    try {
+        const response = await newUsersAPI.getUsers(currentPage, pageSize, nameFilter, userId)
+        if (response && response.data.success) {
+            dispatch(setFriends(response.data.items))
+            dispatch(setFriendsCount(response.data.totalCount))
+        }
+        dispatch(toggleIsFetching(false));
+
+    }
+    catch (e) {
+        console.log(e);
+    }
 }
-    dispatch(toggleIsFetching(false));
-    
-}
 
-
-
-export const unfollowThunk = (id) => async(dispatch) => {
-    dispatch(toggleFollowingProgress(true, id));
-    let response = await newUsersAPI.unfollow(id);
-    if(response.data.success && response.data.unfollowed) dispatch(unfollowSuccess(id))
-    dispatch(toggleFollowingProgress(false, id));
+export const unfollowThunk = (id) => async (dispatch) => {
+    try {
+        dispatch(toggleFollowingProgress(true, id));
+        let response = await newUsersAPI.unfollow(id);
+        if (response.data.success && response.data.unfollowed) dispatch(unfollowSuccess(id))
+        dispatch(toggleFollowingProgress(false, id));
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 export default friendsReducer;

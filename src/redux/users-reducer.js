@@ -10,6 +10,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE_IS_FOLLOWING_IN_PROGRESS';
 const SET_SEATCH_USER_NAME = 'SET_SEATCH_USER_NAME';
+const CLEAR_ALL_USERS_STATE = 'CLEAR_ALL_USERS_STATE';
 
 let initialState = {
     users: [
@@ -28,7 +29,7 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: objectInArray(state.users, '_id', action.userId,  "followers" , action.ownerId, "add")
+                users: objectInArray(state.users, '_id', action.userId, "followers", action.ownerId, "add")
             }
 
         case UNFOLLOW:
@@ -82,6 +83,9 @@ const usersReducer = (state = initialState, action) => {
                     : state.followingInProgress.filter(id => id !== action.userId)
             }
 
+        case CLEAR_ALL_USERS_STATE:
+            return initialState
+
         default: return state;
     }
 }
@@ -103,6 +107,10 @@ export const unfollowSuccess = (userId, ownerId) => ({
 export const setUsers = (users) => ({
     type: SET_USERS,
     users
+})
+
+export const clearAllUsersState = () => ({
+    type: CLEAR_ALL_USERS_STATE
 })
 
 export const clearUsers = () => ({
@@ -137,27 +145,37 @@ export const setSearchUsersName = (searchName) => ({
 
 // thunks
 export const requestUsers = (currentPage, pageSize, nameFilter) => async (dispatch) => {
-    dispatch(toggleIsFetching(true));
-    let response = await newUsersAPI.getUsers(currentPage, pageSize, nameFilter)
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsers(response.data.items))
-    dispatch(setUsersCount(response.data.totalCount))
+    try {
+        dispatch(toggleIsFetching(true));
+        let response = await newUsersAPI.getUsers(currentPage, pageSize, nameFilter)
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(response.data.items))
+        dispatch(setUsersCount(response.data.totalCount))
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 
 
-export const followUnfollowThunk = (id, ownerId, method) => async(dispatch) => {
-    dispatch(toggleFollowingProgress(true,id));
-    const response = method === "follow" 
-    ? await newUsersAPI.follow(id, ownerId)
-    : await newUsersAPI.unfollow(id, ownerId);
-    if(response.data.success && response.data.followed) {
-        dispatch(followSuccess(id, ownerId))
+export const followUnfollowThunk = (id, ownerId, method) => async (dispatch) => {
+    dispatch(toggleFollowingProgress(true, id));
+    try {
+        const response = method === "follow"
+            ? await newUsersAPI.follow(id, ownerId)
+            : await newUsersAPI.unfollow(id, ownerId);
+        if (response.data.success && response.data.followed) {
+            dispatch(followSuccess(id, ownerId))
+        }
+        if (response.data.success && response.data.unfollowed) {
+            dispatch(unfollowSuccess(id, ownerId))
+        }
+        dispatch(toggleFollowingProgress(false, id));
     }
-    if(response.data.success && response.data.unfollowed) {
-        dispatch(unfollowSuccess(id, ownerId))
+    catch (e) {
+        console.log(e);
     }
-    dispatch(toggleFollowingProgress(false,id));    
 }
 
 

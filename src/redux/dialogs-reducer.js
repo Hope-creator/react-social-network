@@ -18,6 +18,7 @@ const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
 const CLEAR_CONVERSATIONS = 'CLEAR_CONVERSATIONS';
 const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 const CLEAR_CURRENT_CONVERASTION_PROFILE = 'CLEAR_CURRENT_CONVERASTION_PROFILE';
+const CLEAR_ALL_DIALOGS = 'CLEAR_ALL';
 
 
 let initialState = {
@@ -26,7 +27,7 @@ let initialState = {
     ownerProfile: null,
     conversationsProfiles: [],
     conversationsCount: 10,
-    messagesCount:30,
+    messagesCount: 30,
     currentConversationProfile: null,
     currentPageConversations: 1,
     pageSizeConversations: 10,
@@ -126,6 +127,9 @@ const dialogsReducer = (state = initialState, action) => {
                 currentConversationProfile: null
             }
 
+        case CLEAR_ALL_DIALOGS:
+            return initialState
+
         default: return state;
     }
 }
@@ -137,6 +141,10 @@ export const addMessage = (userId, fromId, message, date) => ({
     message,
     date: date
 });
+
+export const clearAllDialogs = () => ({
+    type: CLEAR_ALL_DIALOGS
+})
 
 export const clearMessages = () => ({
     type: CLEAR_MESSAGES
@@ -212,43 +220,68 @@ export const updateConversation = (newConversation) => ({
 
 
 export const getOwnerProfile = (ownerId) => async (dispatch) => {
-    let response = await newProfileAPI.getProfile(ownerId);
-    if (response.data.success) dispatch(setOwnerProfile(response.data.profile));
+    try {
+        let response = await newProfileAPI.getProfile(ownerId);
+        if (response && response.data.success) dispatch(setOwnerProfile(response.data.profile));
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 export const getCurrentConversationProfile = (id) => async (dispatch) => {
-    let response = await newProfileAPI.getProfile(id);
-    if (response.data.success) dispatch(setCurrentConversationProfile(response.data.profile));
+    try {
+        let response = await newProfileAPI.getProfile(id);
+        if (response && response.data.success) dispatch(setCurrentConversationProfile(response.data.profile));
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 
 
 export const getConversationsProfiles = (id) => async dispatch => {
-    let response = await newProfileAPI.getProfile(id);
-    if (response.data.success) {
-        dispatch(setConversationProfiles(response.data.profile));
-        return "Success"
+    try {
+        let response = await newProfileAPI.getProfile(id);
+        if (response && response.data.success) {
+            dispatch(setConversationProfiles(response.data.profile));
+            return "Success"
+        }
+        else {
+            return "Failed"
+        }
     }
-    else {
-        return "Failed"
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const getConversations = (currentPage, pageSize) => async (dispatch) => {
-    let response = await newDialogsAPI.getConversations(currentPage, pageSize);
-    if (response.data.success) {
-        dispatch(setNewConversations(response.data.conversations));
-        dispatch(setConversationsCount(response.data.conversationsCount));
-        response.data.conversations.forEach(async c => {
-            getConversationsProfiles(c.peerId)(dispatch)
-        })
+    try {
+        let response = await newDialogsAPI.getConversations(currentPage, pageSize);
+        if (response && response.data.success) {
+            dispatch(setNewConversations(response.data.conversations));
+            dispatch(setConversationsCount(response.data.conversationsCount));
+            response.data.conversations.forEach(async c => {
+                getConversationsProfiles(c.peerId)(dispatch)
+            })
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
 export const getMessages = (currentPage, pageSize, peerId) => async (dispatch) => {
-    let response = await newDialogsAPI.getMessages(currentPage, pageSize, peerId);
-    if (response.data.success) {
-        dispatch(setNewMessages(response.data.messages));
-        dispatch(setMessagesCount(response.data.messagesCount));
+    try {
+        let response = await newDialogsAPI.getMessages(currentPage, pageSize, peerId);
+        if (response && response.data.success) {
+            dispatch(setNewMessages(response.data.messages));
+            dispatch(setMessagesCount(response.data.messagesCount));
+        }
+    }
+    catch (e) {
+        console.log(e)
     }
 }
 
