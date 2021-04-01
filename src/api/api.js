@@ -1,7 +1,10 @@
 import * as axios from 'axios';
+export let cancel;
 
 const BASE_API_URL = '/api';
-//const BASE_APU_URL_CLIENT = 'http://localhost:5000/api'
+//const BASE_APU_URL_CLIENT = 'http://localhost:5000/api';
+const CancelToken = axios.CancelToken;
+export const CancelTokens = {};
 
 const newInstance = axios.create({
     baseURL: BASE_API_URL,
@@ -40,14 +43,20 @@ export const newAuthAPI = {
 
 export const newUsersAPI = {
     getUsers: (currentPage = 1, pageSize = 10, term = '', userId = '') => newInstance
-        .get(`users?page=${currentPage}&count=${pageSize}&term=${term}&friend=${userId}`),
+        .get(`users?page=${currentPage}&count=${pageSize}&term=${term}&friend=${userId}`,
+        {cancelToken: new CancelToken((c) => {
+            CancelTokens.usersCancel = c;
+          })}).catch(reason => console.log(reason)),
     getFriends: (userId, random) => newInstance.get(`users?friend=${userId}&random=${random}`),
     follow: (id) => newInstance.post(`follow/${id}`),
     unfollow: (id) => newInstance.delete(`follow/${id}`),
 }
 
 export const newNewsAPI = {
-    getNews: (currentPage = 1, pageSize = 10) => newInstance.get(`news?page=${currentPage}&count=${pageSize}`),
+    getNews: (currentPage = 1, pageSize = 10) => newInstance.get(`news?page=${currentPage}&count=${pageSize}`,
+    {cancelToken: new CancelToken((c) => {
+        CancelTokens.newsCancel = c;
+      })}).catch(reason => console.log(reason)),
     addNewPost: (data) => {
         return newInstance.post(`news/wall`, data, {
             headers: { "Content-Type": null }
@@ -55,9 +64,13 @@ export const newNewsAPI = {
     }
 }
 
+
 export const newDialogsAPI = {
     getConversations: (currentPage = 1, pageSize = 10) => {
-        return newInstance.get(`messages/conversations?page=${currentPage}&count=${pageSize}`)
+        return newInstance.get(`messages/conversations?page=${currentPage}&count=${pageSize}`,
+        {cancelToken: new CancelToken((c) => {
+            CancelTokens.dialogsCancel = c;
+          })}).catch(reason => console.log(reason))
     },
     getMessages: (currentPage = 1, pageSize = 10, peerId = '') => {
         return newInstance.get(`messages/messages?page=${currentPage}&count=${pageSize}&peerId=${peerId}`)
@@ -66,8 +79,13 @@ export const newDialogsAPI = {
 
 export const newProfileAPI = {
     getProfile: (id) => newInstance.get(`profile/${id}`),
-    getPosts: (id, currentPage = 1, pageSize = 10) => newInstance.get(`news/wall/${id}?page=${currentPage}&count=${pageSize}`),
-    getPhotos: (id, currentPage = 1, pageSize = 10) => newInstance.get(`profile/photos/${id}?page=${currentPage}&count=${pageSize}`),
+    getPosts: (id, currentPage = 1, pageSize = 10) => newInstance.get(`news/wall/${id}?page=${currentPage}&count=${pageSize}`,
+    {cancelToken: new CancelToken((c) => {
+        CancelTokens.postsCancel = c;
+      })}).catch(reason => console.log(reason)),
+    getPhotos: (id, currentPage = 1, pageSize = 10) => newInstance.get(`profile/photos/${id}?page=${currentPage}&count=${pageSize}`,{cancelToken: new CancelToken((c) => {
+        CancelTokens.photosCancel = c;
+      })}).catch(reason => console.log(reason)),
     updatePhoto: (file) => newInstance.put(`profile/photo`, file),
     updateStatus: (newStatus) => newInstance.put(`profile/status`, { newStatus }),
     updateProfile: (profile) => newInstance.put(`profile`, profile),
