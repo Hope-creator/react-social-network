@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { followUnfollowThunk, setCurrentPage, setUsersCount, toggleFollowingProgress, requestUsers, clearUsers, setSearchUsersName } from '../../redux/users-reducer';
 import Preloader from '../common/preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers, getSearchUsersName } from '../../redux/users-selectors';
-import {withGetOnScroll} from '../../hoc/withGetOnScroll'
+import {withGetOnScroll} from '../../hoc/withGetOnScroll';
 import { CancelTokens } from '../../api/api';
 
 class UsersContainer extends React.Component {
