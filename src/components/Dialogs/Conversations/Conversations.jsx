@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { withGetOnScroll } from '../../../hoc/withGetOnScroll';
 import ConversationItem from './ConversationItem/ConversationItem';
 import socket from '../../../socket';
 import NoConversation from './ConversationItem/NoConversation'
+import { CancelTokens } from '../../../api/api';
 
 const Conversations = (props) => {
 
@@ -14,6 +15,11 @@ const Conversations = (props) => {
 
     const [conversationsProfilesState, setConversationsProfilesState] = useState([]);
     const [fetchProfiles, setFetchProfiles] = useState(false);
+
+    const unmounted = useRef(false);
+    useEffect(() => {
+        return () => { unmounted.current = true }
+    }, []);
 
     //set profiles IDs for getting profiles 
     useEffect(() => {
@@ -29,10 +35,12 @@ const Conversations = (props) => {
         conversationsProfilesState.forEach( id => {
             if(!conversationsProfiles
                 .find( profile => id === profile._id) && !fetchProfiles) {
-                    setFetchProfiles(true);
+                    if(!unmounted.current){
+                        setFetchProfiles(true);
                     getConversationsProfiles(id).then(res=>{
-                        if(res) setFetchProfiles(false);
+                        if(res && !unmounted.current) setFetchProfiles(false);
                     });
+                }
                 }
         })
     },[fetchProfiles, conversationsProfilesState,getConversationsProfiles,conversationsProfiles])
@@ -45,6 +53,7 @@ const Conversations = (props) => {
         request(1, pageSize);
         getOnScroll();
         return function cleanUp() {
+            CancelTokens.dialogsCancel("Fetch canceled by user")
             clearConversations()
             clearConversationsProfiles()
         }
