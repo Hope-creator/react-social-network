@@ -1,18 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentPage, setFriendsCount, unfollowThunk, toggleFollowingProgress, requestFriends, clearFriends, setSearchFriendsName } from '../../redux/friends-reducer';
+import { setCurrentPage, setFriendsCount,
+    unfollowThunk, toggleFollowingProgress,
+    requestFriends, clearFriends,
+    setSearchFriendsName, clearAllFriendsState } from '../../redux/friends-reducer';
 import Preloader from '../common/preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getFriends, getTotalFriendsCount, getSearchFriendsName } from '../../redux/friends-selectors';
 import Friends from './Friends';
 import { withGetOnScroll } from '../../hoc/withGetOnScroll';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { CancelTokens } from '../../api/api';
 
 class FriendsContainer extends React.Component {
 
     componentDidMount() {
         this.props.request(1, this.props.pageSize, '' ,this.props.ownerId);
-        this.props.getOnScroll()
+        this.props.getOnScroll();
     }
 
     componentDidUpdate(prevState) {
@@ -25,10 +29,9 @@ class FriendsContainer extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.clearFriends();
+        this.props.clearAllFriendsState()
         window.onscroll = null;
-        this.props.setSearchFriendsName('');
-        this.props.setCurrentPage(1)
+        CancelTokens.usersCancel('Fetch aborted by user');
     }
 
 
@@ -78,7 +81,7 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = {
     unfollowThunk, setFriendsCount, setCurrentPage,
     toggleFollowingProgress, request: requestFriends, clearFriends,
-    setSearchFriendsName
+    setSearchFriendsName, clearAllFriendsState
 }
 
 

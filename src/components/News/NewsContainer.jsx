@@ -5,11 +5,12 @@ import { getNews, getProfile,setCurrentPageNews, getNewsProfiles, clearNewsProfi
 import { withGetOnScroll } from '../../hoc/withGetOnScroll';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { CancelTokens } from '../../api/api';
 
 
 const NewsContainer = ({profile, userId, newsItems,
-    newsUsersProfiles, lastAttachemtId, currentPage,
-    pageSize, totalCount, getProfile,
+    newsUsersProfiles,
+    pageSize, getProfile,
     getNewsProfiles, setCurrentPage, clearNews,
     clearNewsProfiles, request, getOnScroll}) => {
 
@@ -26,7 +27,7 @@ const NewsContainer = ({profile, userId, newsItems,
 
 
     useEffect(() => {
-        getProfile(userId)
+        getProfile(userId);
     }, [userId, getProfile]);
 
     useEffect(() => {
@@ -45,6 +46,7 @@ const NewsContainer = ({profile, userId, newsItems,
         request(1, pageSize);
         getOnScroll();
         return function cleanUp() {
+            CancelTokens.newsCancel("Fetch canceled by user");
             clearNews();
             clearNewsProfiles();
             setCurrentPage(1)

@@ -4,29 +4,29 @@ import Post from './Post'
 import AddPostForm from './AddPostForm';
 import { withGetOnScroll } from '../../../../hoc/withGetOnScroll';
 import NoPost from './NoPosts';
+import { CancelTokens } from '../../../../api/api';
 
 const WallContainer = ({
     profileOwner, request,
-    clearWallPosts, totalCount,
-    profile, wallPosts,
-    pageSize, setCurrentPage,
-    addNewPostThunk, searchName,
-    currentPage, getOnScroll
+    clearWallPosts, profile,
+    wallPosts, pageSize, setCurrentPage,
+    addNewPostThunk, getOnScroll
 }) => {
 
-    const posts = wallPosts.map(post => <Post key={post._id} profile={profile} post={post} />)
-    useEffect(() => {
 
+    useEffect(() => {
         request(1, pageSize, profile._id);
         getOnScroll();
-
         return function cleanUp() {
-           clearWallPosts();
+            CancelTokens.postsCancel('Fetch cancelled by user')
+            clearWallPosts();
             setCurrentPage(1);
             window.onscroll = null;
         }
 
-    }, [profile._id, request, clearWallPosts, getOnScroll,setCurrentPage ,pageSize,])
+    }, [profile._id, request, clearWallPosts, getOnScroll, setCurrentPage, pageSize])
+
+    const posts = wallPosts.map(post => <Post key={post._id} profile={profile} post={post} />)
 
     return <div className={s.wallContainer}>
         <div className={s.postFormWrapper}>

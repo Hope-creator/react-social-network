@@ -5,6 +5,7 @@ import { followUnfollowThunk, setCurrentPage, setUsersCount, toggleFollowingProg
 import Preloader from '../common/preloader/Preloader';
 import { getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getTotalUsersCount, getUsers, getSearchUsersName } from '../../redux/users-selectors';
 import {withGetOnScroll} from '../../hoc/withGetOnScroll'
+import { CancelTokens } from '../../api/api';
 
 class UsersContainer extends React.Component {
 
@@ -24,6 +25,7 @@ class UsersContainer extends React.Component {
     }
 
     componentWillUnmount() {
+        CancelTokens.usersCancel();
         this.props.clearUsers();
         window.onscroll = null;
         this.props.setSearchUsersName('');
