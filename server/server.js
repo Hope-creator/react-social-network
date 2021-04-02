@@ -12,7 +12,7 @@ const io = require('socket.io')(http, {
     },
 });
 
-let secrets, port;
+let secrets = {}, port;
 
 if (process.env.NODE_ENV === "production") {
     secrets.JWT_SECRET = process.env.JWT_SECRET;
