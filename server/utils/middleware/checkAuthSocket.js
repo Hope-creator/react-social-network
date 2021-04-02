@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
-const {JWT_SECRET} = require("../secrets.json");
 
 let secret;
 if (process.env.NODE_ENV == "production") {
     secret = process.env.config.JWT_SECRET;
 } else {
+    const {JWT_SECRET} = require("../secrets.json");
     secret = JWT_SECRET;
 }
 
