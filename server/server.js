@@ -16,6 +16,7 @@ let secrets = {}, port;
 
 if (process.env.NODE_ENV === "production") {
     secrets.JWT_SECRET = process.env.JWT_SECRET;
+    secrets.COOKIE_SESSION_SECRET = process.env.COOKIE_SESSION_SECRET;
     port = process.env.PORT;
 } else {
     secrets = require("./utils/secrets");
