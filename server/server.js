@@ -14,7 +14,7 @@ const io = require('socket.io')(http, {
 
 let secrets, port;
 if (process.env.NODE_ENV === "production") {
-    secrets = process.env.config;
+    secrets.JWT_SECRET = process.env.JWT_SECRET;
     port = process.env.PORT;
 } else {
     secrets = require("./utils/secrets");

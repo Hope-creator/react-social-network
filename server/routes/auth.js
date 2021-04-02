@@ -46,7 +46,7 @@ router.post("/login", async (req, res) => {
                             userRole: user.role,
                             userStatus: user.status,
                         },
-                        "mN5eYG62FZwUS77m",
+                        res.locals.secrets.JWT_SECRET,
                         {
                             expiresIn: 60 * 60 * 24 * 14,
                         }
@@ -132,7 +132,7 @@ router.post("/register", async (req, res) => {
                         userRole: user.role,
                         userStatus: user.status,
                     },
-                    "mN5eYG62FZwUS77m",
+                    res.locals.secrets.JWT_SECRET,
                     {
                         expiresIn: 60 * 60 * 24 * 14,
                     }
@@ -318,7 +318,7 @@ router.get(
                         userRole: user.role,
                         userStatus: user.status,
                     },
-                    "mN5eYG62FZwUS77m",
+                    res.locals.secrets.JWT_SECRET,
                     {
                         expiresIn: 60 * 60 * 24 * 14,
                     }
