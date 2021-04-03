@@ -85,7 +85,7 @@ router.post("/wall", authenticateToken,createUserFolder, upload.array('attachmen
         ts,
         text,
     } = req.body;
-    const path = `${req.protocol}://${req.get("host")}`;
+    const path = `${req.protocol}://${req.get("host")}/`;
     const attachments = req.files.map(file=> {
         const fileUrl = file.path.replace(/\\/g, "/");
         return {
