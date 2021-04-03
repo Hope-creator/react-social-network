@@ -113,10 +113,11 @@ router.get("/:userId", async (req, res) => {
 router.put("/photo", authenticateToken, createUserFolder, upload.single('profilePicture'), async (req, res) => {
     const id = req.userId;
     const profilePictureUrl = req.file.path.replace(/\\/g, "/");
+    const path = `${req.protocol}://${req.get("host")}`;
     if (!profilePictureUrl) res.json({ succes: false, error: "Upload file failed" });
     try {
         const user = await User.findByIdAndUpdate(id,
-            { "profile.profilePicture": "http://localhost:5000/" + profilePictureUrl },
+            { "profile.profilePicture": path + profilePictureUrl },
             {
                 new: true,
                 projection: { "profile.profilePicture": 1 }
@@ -175,8 +176,9 @@ router.post("/photos", authenticateToken, createUserFolderPhotos, uploadPhotos.a
     const id = req.userId;
     const { ts } = req.body;
     const errors = [];
+    const path = `${req.protocol}://${req.get("host")}`;
     const savedPhotos = await Promise.all(req.files.map(async file => {
-        const url = "http://localhost:5000/" + file.path.replace(/\\/g, "/");
+        const url = path + file.path.replace(/\\/g, "/");
         try {
             const savePhoto = new Photo({
                 by: {

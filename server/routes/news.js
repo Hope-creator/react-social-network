@@ -85,12 +85,13 @@ router.post("/wall", authenticateToken,createUserFolder, upload.array('attachmen
         ts,
         text,
     } = req.body;
+    const path = `${req.protocol}://${req.get("host")}`;
     const attachments = req.files.map(file=> {
         const fileUrl = file.path.replace(/\\/g, "/");
         return {
             type: file.mimetype.match("image") ? "image" : "video",
             ts: ts,
-            url: "http://localhost:5000/" + fileUrl
+            url: path + fileUrl
         }
     })
     let errors = [];
