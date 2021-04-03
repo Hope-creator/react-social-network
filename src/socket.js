@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const URL = "http://localhost:5000";
+const URL = "https://boiling-tundra-00901.herokuapp.com/";
 const socket = io(URL, {
     autoConnect: false,
     reconnectionAttempts: 3
