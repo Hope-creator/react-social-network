@@ -6,11 +6,7 @@ const socketIO = require('./socketIO')
 const compression = require("compression");
 const csurf = require("csurf");
 const path = require("path");
-const io = require('socket.io')(http, {
-    cors: {
-        origin: "http://localhost:3000",
-    },
-});
+const io = require('socket.io')(http);
 
 let secrets = {}, port;
 
