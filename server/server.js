@@ -44,8 +44,8 @@ app.use((req, res, next) => {
 
 
 // Serve static ressources in production
-let static = path.join(__dirname, "../build")
-app.use(express.static(static));
+let staticPath = path.join(__dirname, "../build")
+app.use(express.static(staticPath));
 let staticUploads = path.join(__dirname, "/uploads")
 app.use("/uploads", express.static(staticUploads));
 

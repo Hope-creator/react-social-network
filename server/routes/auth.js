@@ -371,7 +371,6 @@ router.post("/password-reset/get-code", async (req, res) => {
                     email: email,
                 });
                 await newCode.save();
-                fs.appendFileSync("codes.txt", `\n ${secretCode}`);
                 const data = {
                     from: `Social Network`,
                     to: email,
