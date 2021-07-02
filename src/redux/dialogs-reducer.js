@@ -27,12 +27,12 @@ let initialState = {
     ownerProfile: null,
     conversationsProfiles: [],
     conversationsCount: 10,
-    messagesCount: 30,
+    messagesCount: 50,
     currentConversationProfile: null,
     currentPageConversations: 1,
-    pageSizeConversations: 10,
+    pageSizeConversations: 30,
     currentPageMessages: 1,
-    pageSizeMessages: 10,
+    pageSizeMessages: 30,
 }
 
 const dialogsReducer = (state = initialState, action) => {

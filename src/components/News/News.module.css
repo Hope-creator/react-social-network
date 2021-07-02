@@ -58,12 +58,14 @@
 
 .newsContent {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .newsContentItem {
-    flex: 1 0 30%;
+    flex: 0 0 49%;
     margin-top: 5px;
+    overflow-x: hidden;
     margin-bottom: 10px;
     box-sizing: border-box;
     border: 1px solid #e2e9e6;
@@ -87,10 +89,6 @@
     text-decoration: underline;
 }
 
-.newsContentItem:nth-child(3n+2) {
-    margin-left: 10px;
-    margin-right: 10px;
-}
 
 .newsItemHeaderPhoto {
     width: 50px;

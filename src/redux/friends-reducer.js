@@ -13,7 +13,7 @@ const CLEAR_ALL_FRIENDS_STATE = 'CLEAR_ALL_FRIENDS_STATE';
 let initialState = {
     friends: [
     ],
-    pageSizeFriends: 5,
+    pageSizeFriends: 30,
     totalFriendsCount: 100,
     currentPageFriends: 1,
     isFetchingFriends: true,

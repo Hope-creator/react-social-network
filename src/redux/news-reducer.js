@@ -15,7 +15,7 @@ let initialState = {
     newsProfiles: [],
     totalPostCount: 10,
     currentPage: 1,
-    pageSize: 10,
+    pageSize: 50,
 }
 
 const newsReducer = (state = initialState, action) => {

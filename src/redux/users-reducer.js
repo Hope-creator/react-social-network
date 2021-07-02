@@ -15,7 +15,7 @@ const CLEAR_ALL_USERS_STATE = 'CLEAR_ALL_USERS_STATE';
 let initialState = {
     users: [
     ],
-    pageSize: 9,
+    pageSize: 30,
     totalUsersCount: 100,
     currentPage: 1,
     isFetching: true,

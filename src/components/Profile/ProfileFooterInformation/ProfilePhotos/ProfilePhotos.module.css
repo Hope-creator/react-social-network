@@ -1,4 +1,9 @@
 
+.photosContainer {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
 .photosBlock {
     display: flex;
     flex-wrap: wrap;
