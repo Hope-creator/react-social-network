@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 let secret;
-if (process.env.NODE_ENV == "production") {
+if (process.env.NODE_ENV === "production") {
     secret = process.env.JWT_SECRET;
 } else {
     const {JWT_SECRET} = require("../secrets.json");
