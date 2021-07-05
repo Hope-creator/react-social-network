@@ -56,5 +56,6 @@
   "devDependencies": {
     "gh-pages": "^3.1.0",
     "react-test-renderer": "^17.0.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
