@@ -1,4 +1,4 @@
-import { initUser } from "./auth-reducer";
+import { initUser } from "../modules/auth/thunks";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
