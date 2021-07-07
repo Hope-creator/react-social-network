@@ -1,0 +1,15 @@
+.navLinkBlock {
+  &__text {
+    &a {
+      color: #000;
+      transition: all 0.5s linear;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: rgb(36, 98, 241);
+        outline: none;
+        text-decoration: underline;
+      }
+    }
+  }
+}
