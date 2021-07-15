@@ -1,9 +1,15 @@
-import { newAuthAPI } from "../../api/api";
-import { setUser, setUnreadConvertastion } from "./actionCreators";
+import { authApi } from "../../api/api";
+import {
+  setUser,
+  setUnreadConvertastion,
+  setAuthUserData,
+  updateRegUrl,
+  clearRegUrl,
+} from "./actionCreators";
 
 const setUserRegThunk =
   (name, email, password, password2, acceptance) => async (dispatch) => {
-    const response = await newAuthAPI.authReg(
+    const response = await authApi.authReg(
       name,
       email,
       password,
@@ -12,10 +18,11 @@ const setUserRegThunk =
     );
     if (response.data.success) {
       dispatch(
-        setUser(
+        setAuthUserData(
           response.data.userId,
           response.data.userRole,
           response.data.userStatus,
+          response.data.regUrl,
           false
         )
       );
@@ -23,10 +30,10 @@ const setUserRegThunk =
     return response.data;
   };
 const updateUserStatusThunk = () => async (dispatch) => {
-  const response = await newAuthAPI.updateUserStatus();
+  const response = await authApi.updateUserStatus();
   if (!response.data.success) {
     localStorage.clear();
-    const logout = await newAuthAPI.logout();
+    const logout = await authApi.logout();
     if (logout.data.success) {
       return response.data;
     }
@@ -43,9 +50,18 @@ const updateUserStatusThunk = () => async (dispatch) => {
   }
 };
 
+const updateUserRegUrlThunk = () => async (dispatch) => {
+  const response = await authApi.getNewVerificationEmail();
+  if (response.data.success) {
+    dispatch(updateRegUrl(response.data.url));
+  } else {
+    dispatch(clearRegUrl());
+  }
+};
+
 const initUser = () => async (dispatch) => {
   try {
-    const response = await newAuthAPI.initUser();
+    const response = await authApi.initUser();
     if (response && response.data.success)
       dispatch(
         setUser(
@@ -60,18 +76,9 @@ const initUser = () => async (dispatch) => {
   }
 };
 
-const getNewVerificationEmail = () => async (dispatch) => {
-  try {
-    const response = await newAuthAPI.getNewVerificationEmail();
-    if (response && response.data) return response.data;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 const authLoginThunk = (email, password) => async (dispatch) => {
   try {
-    const response = await newAuthAPI.authLogin(email, password);
+    const response = await authApi.authLogin(email, password);
     if (response && response.data.success) {
       dispatch(
         setUser(
@@ -92,7 +99,7 @@ const authLoginThunk = (email, password) => async (dispatch) => {
 
 const authLogoutThunk = () => async (dispatch) => {
   try {
-    const response = await newAuthAPI.logout();
+    const response = await authApi.logout();
     if (response && response.data.success) {
       dispatch(setUser(null, null, null, false));
     }
@@ -100,30 +107,6 @@ const authLogoutThunk = () => async (dispatch) => {
     console.log(e);
   }
 };
-
-const resetPasswordGetCode = (email) => async (dispatch) => {
-  try {
-    const response = await newAuthAPI.resetPasswordGetCode(email);
-    if (response && response.data) return response.data;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-const resetPasswordVerifyCode =
-  (email, password, password2, code) => async (dispatch) => {
-    try {
-      const response = await newAuthAPI.resetPasswordVerifyCode(
-        email,
-        password,
-        password2,
-        code
-      );
-      if (response && response.data) return response.data;
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
 const unreadConversationsSubcribeThunk = (data) => (dispatch) => {
   dispatch(setUnreadConvertastion(data));
@@ -133,10 +116,8 @@ export {
   setUserRegThunk,
   updateUserStatusThunk,
   initUser,
-  getNewVerificationEmail,
   authLoginThunk,
   authLogoutThunk,
-  resetPasswordGetCode,
-  resetPasswordVerifyCode,
   unreadConversationsSubcribeThunk,
+  updateUserRegUrlThunk,
 };
