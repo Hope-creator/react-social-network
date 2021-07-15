@@ -179,14 +179,15 @@ router.post(
     const errors = [];
     const savedPhotos = await Promise.all(
       req.files.map(async (file) => {
-        const url = "http://localhost:5000/" + file.path.replace(/\\/g, "/");
+        const url = `${req.protocol}://${req.get("host")}/`;
+        const fileUrl = url + file.path.replace(/\\/g, "/");
         try {
           const savePhoto = new Photo({
             by: {
               _id: id,
             },
             ts: ts,
-            url: url,
+            url: fileUrl,
           });
           const savedPhoto = await savePhoto.save();
           return savedPhoto;
