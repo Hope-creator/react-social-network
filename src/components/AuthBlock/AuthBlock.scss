@@ -1,23 +1,27 @@
 .authBlock {
-    display: flex;
-    align-items: center;
-    width: 220px;
-    justify-content: space-around;
-    
-    &a {
-        line-height: 0;
-        font-size: 1rem;
-        text-decoration: none;
-        color: black;
-        width: auto;
-        height: auto;
-        
-    }
+  display: flex;
+  align-items: center;
+  width: 220px;
+  justify-content: space-around;
 
-    &__button {
-        background: none;
-        border: none;
-        outline: none;
-        cursor: pointer;
-    }
+  a {
+    line-height: 0;
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    width: auto;
+    height: auto;
   }
+
+  span {
+    font-size: 0.8rem;
+    line-height: 3;
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}
