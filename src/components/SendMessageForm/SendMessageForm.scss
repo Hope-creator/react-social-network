@@ -1,0 +1,35 @@
+.sendMessageForm {
+  position: relative;
+  &__message {
+    width: calc(100% - 66px);
+    textarea {
+      overflow: auto;
+      word-break: break-word;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    height: 38px;
+    width: 65px;
+    background-color: rgb(116, 158, 255);
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &:hover {
+      background-color: rgb(79, 132, 255);
+    }
+  }
+}
