@@ -107,7 +107,6 @@ router.put(
   async (req, res) => {
     const id = req.userId;
     const profilePictureUrl = req.file.path.replace(/\\/g, "/");
-<<<<<<< HEAD
     if (!profilePictureUrl)
       res.json({ succes: false, error: "Upload file failed" });
     try {
@@ -120,27 +119,6 @@ router.put(
         {
           new: true,
           projection: { "profile.profilePicture": 1 },
-=======
-    const path = `${req.protocol}://${req.get("host")}/`;
-    if (!profilePictureUrl) res.json({ succes: false, error: "Upload file failed" });
-    try {
-        const user = await User.findByIdAndUpdate(id,
-            { "profile.profilePicture": path + profilePictureUrl },
-            {
-                new: true,
-                projection: { "profile.profilePicture": 1 }
-            });
-        if (!user) {
-            res.json({
-                success: false,
-                error: "User not found"
-            })
-        } else {
-            res.json({
-                success: true,
-                user
-            })
->>>>>>> fbc9760b007a28469d4b833d12eeb0d65c8cf610
         }
       );
       if (!user) {
