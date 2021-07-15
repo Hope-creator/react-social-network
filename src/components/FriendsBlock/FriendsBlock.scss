@@ -1,0 +1,50 @@
+.friendsBlock {
+  &__header {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e9e6;
+    width: 100%;
+    height: 17%;
+    line-height: 1;
+  }
+  &__name {
+    line-height: 1;
+    display: block;
+    max-width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+  }
+  &__link {
+    float: right;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    cursor: pointer;
+  }
+  &__content {
+    height: 83%;
+    img {
+      object-fit: cover;
+      height: auto;
+      width: 100%;
+      max-width: 150px;
+      border-radius: 50%;
+    }
+  }
+  &__grid {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    height: 83%;
+    width: 100%;
+    li {
+      height: 29%;
+      flex-basis: 20%;
+      margin-bottom: 5%;
+      padding: 2%;
+      text-align: center;
+    }
+  }
+}
