@@ -12,6 +12,7 @@
     "crypto-js": "^4.0.0",
     "crypto-random-string": "^3.3.0",
     "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "jsonwebtoken": "^8.5.1",
@@ -30,7 +31,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "nodemon": "nodemon server.js"
-
   },
   "repository": {
     "type": "git",
