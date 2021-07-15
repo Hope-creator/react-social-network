@@ -1,0 +1,19 @@
+.addPostForm {
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__textarea {
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+  }
+  &__media {
+    display: flex;
+    justify-content: space-around;
+    &-video {
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+  }
+}
