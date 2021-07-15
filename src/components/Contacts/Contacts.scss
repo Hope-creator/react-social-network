@@ -1,0 +1,22 @@
+.contacts {
+  &__button {
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  &__item {
+    display: block;
+    word-break: break-all;
+    border: 1px solid #e2e9e6;
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 7px;
+  }
+}
