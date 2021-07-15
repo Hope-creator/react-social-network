@@ -3,9 +3,6 @@
 # dependencies
 /node_modules
 
-#secrets
-/utils/secrets.json
-
 #env
 /.env
 
