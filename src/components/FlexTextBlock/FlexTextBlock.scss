@@ -1,0 +1,14 @@
+.flexTextBlock {
+  display: flex;
+  span {
+    &:first-child {
+      color: #a8a8a8;
+      flex-basis: 40%;
+    }
+    &:last-child {
+      margin: 0 auto;
+      flex-basis: 60%;
+      word-break: break-word;
+    }
+  }
+}
