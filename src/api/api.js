@@ -1,6 +1,7 @@
 import * as axios from "axios";
 export let cancel;
 
+<<<<<<< HEAD
 const BASE_API_URL = "/api";
 const CancelToken = axios.CancelToken;
 export const CancelTokens = {};
@@ -11,6 +12,19 @@ const instance = axios.create({
   xsrfCookieName: "mytoken",
   xsrfHeaderName: "csrf-token",
 });
+=======
+const BASE_API_URL = '/api';
+//const BASE_APU_URL_CLIENT = 'http://localhost:5000/api';
+const CancelToken = axios.CancelToken;
+export const CancelTokens = {};
+
+const newInstance = axios.create({
+    baseURL: BASE_API_URL,
+    withCredentials: true,
+    xsrfCookieName: "mytoken",
+    xsrfHeaderName: "csrf-token"
+})
+>>>>>>> fbc9760b007a28469d4b833d12eeb0d65c8cf610
 
 export const authApi = {
   authReg: (name, email, password, password2, acceptance) =>
