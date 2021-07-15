@@ -1,0 +1,16 @@
+.noContentBlock {
+  height: 300px;
+  width: 100%;
+  &__content {
+    text-align: center;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: #c1c1c1;
+    i {
+      font-size: 72px;
+    }
+  }
+}
