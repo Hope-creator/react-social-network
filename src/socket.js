@@ -4,7 +4,7 @@ import { dialogsActionCreators } from "./modules/dialogs";
 const URL = "https://boiling-tundra-00901.herokuapp.com/";
 const socket = io(URL, {
   autoConnect: false,
-  reconnectionAttempts: 3,
+  reconnectionAttempts: 3
 });
 
 export const onMessage = (content, to, context) => (dispatch) => {
