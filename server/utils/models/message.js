@@ -1,26 +1,28 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const MessageSchema = new Schema({
+const MessageSchema = new Schema(
+  {
     fromId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     peerId: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     ts: {
-        type: Date,
-        required: true
+      type: Date,
+      required: true,
     },
     text: {
-        type: String,
-        default: null
+      type: String,
+      default: null,
     },
-},
-    {
-        versionKey: false // Version key needed to clear update files
-    });
+  },
+  {
+    versionKey: false, // Version key needed to clear update files
+  }
+);
 
 module.exports.Message = mongoose.model("message", MessageSchema);
