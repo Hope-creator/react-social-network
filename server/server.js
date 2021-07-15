@@ -6,7 +6,6 @@ const socketIO = require("./socketIO");
 const compression = require("compression");
 const csurf = require("csurf");
 const path = require("path");
-<<<<<<< HEAD
 const io = require("socket.io")(http, {
   cors: {
     origin: "http://localhost:3000",
@@ -14,9 +13,6 @@ const io = require("socket.io")(http, {
 });
 const dotenv = require("dotenv");
 dotenv.config();
-=======
-const io = require('socket.io')(http);
->>>>>>> fbc9760b007a28469d4b833d12eeb0d65c8cf610
 
 const port = process.env.PORT;
 

@@ -89,7 +89,6 @@ router.post(
       res.json({ success: false });
     }
     const name = await User.findById(id, "name");
-<<<<<<< HEAD
     const { ts, text } = req.body;
     const attachments = req.files.map((file) => {
       const fileUrl = file.path.replace(/\\/g, "/");
@@ -99,21 +98,6 @@ router.post(
         url: "http://localhost:5000/" + fileUrl,
       };
     });
-=======
-    const {
-        ts,
-        text,
-    } = req.body;
-    const path = `${req.protocol}://${req.get("host")}/`;
-    const attachments = req.files.map(file=> {
-        const fileUrl = file.path.replace(/\\/g, "/");
-        return {
-            type: file.mimetype.match("image") ? "image" : "video",
-            ts: ts,
-            url: path + fileUrl
-        }
-    })
->>>>>>> fbc9760b007a28469d4b833d12eeb0d65c8cf610
     let errors = [];
     if (!ts) {
       errors.push("Wrong post type");
