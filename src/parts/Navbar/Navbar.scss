@@ -1,0 +1,45 @@
+.navbar {
+  grid-area: n;
+  width: 150px;
+  height: 100%;
+  background-color: #212121;
+  position: fixed;
+  padding-top: 54px;
+  overflow-y: auto;
+  z-index: 1;
+  &_hidden {
+    display: none;
+  }
+  &__unread {
+    color: #fff;
+    margin-left: 10px;
+  }
+
+  &__link {
+    display: block;
+    line-height: 50px;
+    color: #757575;
+    width: 100%;
+    height: 50px;
+    text-decoration: none;
+    padding: 0 10px;
+    box-sizing: border-box;
+    div {
+      margin-left: 15px;
+      display: inline-block;
+    }
+
+    &:hover,
+    &_active {
+      background-color: #141414;
+      color: white;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    text-align: center;
+    padding-top: 38px;
+    max-width: 100vw;
+  }
+}
