@@ -1,0 +1,83 @@
+.news {
+  &__header {
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    min-height: 100px;
+    display: flex;
+    flex-basis: 67%;
+    padding-left: 30px;
+    &-avatar {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      border: 1px solid #e6e6e6;
+    }
+    &-info {
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      h2 {
+        line-height: 1;
+        color: #000;
+        display: block;
+        width: 750px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        &:hover {
+          text-decoration: underline;
+        }
+        @media screen and (max-width: 600px) {
+          width: 50px;
+        }
+        @media screen and (max-width: 850px) {
+          width: 150px;
+        }
+      }
+    }
+    &-link {
+      padding: 15px;
+      display: block;
+      float: left;
+      &:not(:first-child) {
+        color: #8d8d8d;
+        border-top: 1px solid #e6e6e6;
+        &:hover {
+          color: #000;
+          border-top: 1px solid #000;
+        }
+      }
+      &_active {
+        padding: 15px;
+        display: block;
+        float: left;
+        color: #000 !important;
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &-item {
+      flex: 0 0 49%;
+      margin-top: 5px;
+      overflow-x: hidden;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #e2e9e6;
+      transition: all 0.5s ease-in-out;
+      @media screen and (max-width: 850px) {
+        flex: 1 0 100%;
+        margin: 5px;
+        &:nth-child(odd) {
+          margin: 5px;
+        }
+        &:nth-child(3n + 2) {
+          margin: 5px;
+        }
+      }
+    }
+  }
+}
