@@ -1,0 +1,81 @@
+.profileHeader {
+  margin-bottom: 20px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  &__header,
+  &__footer {
+    text-align: center;
+    border: 1px solid #e2e9e6;
+    background-color: #fff;
+    padding: 20px;
+  }
+  &__name {
+    line-height: 1;
+    color: #000;
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    &:hover {
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 600px) {
+      width: 50px;
+    }
+    @media screen and (max-width: 850px) {
+      width: 150px;
+    }
+  }
+  &__divider {
+    height: 50px;
+    background-color: transparent;
+    border-left: 1px solid #e2e9e6;
+    border-right: 1px solid #e2e9e6;
+  }
+  &__button {
+    padding: 8px 10px;
+    cursor: pointer;
+    background-color: #63acfd;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    &:hover {
+      background-color: #63acfd80;
+    }
+    &:active {
+      padding-top: 9px;
+      margin-bottom: -1px;
+      background-color: #077cffc4;
+    }
+  }
+  &__info {
+    display: flex;
+
+    &-contacts {
+      flex-basis: 33%;
+      display: block;
+      border: 1px solid #e2e9e6;
+      background-color: #fff;
+      padding: 10px;
+    }
+
+    &-about,
+    &-friends {
+      flex-basis: 33%;
+      background-color: #fff;
+      box-sizing: border-box;
+      border: 1px solid #e2e9e6;
+      height: inherit;
+    }
+
+    @media screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

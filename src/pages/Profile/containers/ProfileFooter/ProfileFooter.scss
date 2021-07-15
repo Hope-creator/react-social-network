@@ -1,0 +1,22 @@
+.profileFooter {
+  &__list {
+    display: flex;
+    &-item {
+      font-size: 0.8rem;
+      padding: 10px 15px;
+      cursor: pointer;
+      &_active {
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        cursor: pointer;
+        background-color: white;
+        border: 1px solid #4687ce;
+        border-bottom: none;
+      }
+    }
+  }
+  &__photos {
+    background-color: #fff;
+    box-shadow: 2px 2px 3px #e6e6e6;
+  }
+}
