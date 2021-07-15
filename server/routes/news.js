@@ -90,12 +90,13 @@ router.post(
     }
     const name = await User.findById(id, "name");
     const { ts, text } = req.body;
+    const url = `${req.protocol}://${req.get("host")}/`;
     const attachments = req.files.map((file) => {
       const fileUrl = file.path.replace(/\\/g, "/");
       return {
         type: file.mimetype.match("image") ? "image" : "video",
         ts: ts,
-        url: "http://localhost:5000/" + fileUrl,
+        url: url + fileUrl,
       };
     });
     let errors = [];

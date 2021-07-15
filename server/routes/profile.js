@@ -110,11 +110,11 @@ router.put(
     if (!profilePictureUrl)
       res.json({ succes: false, error: "Upload file failed" });
     try {
+      const url = `${req.protocol}://${req.get("host")}/`;
       const user = await User.findByIdAndUpdate(
         id,
         {
-          "profile.profilePicture":
-            "http://localhost:5000/" + profilePictureUrl,
+          "profile.profilePicture": url + profilePictureUrl,
         },
         {
           new: true,
@@ -263,8 +263,9 @@ router.put("/", authenticateToken, async (req, res) => {
   };
 
   const errors = [];
-  
-  if (name && name.length > 50) errors.push("Name can be not more than 50 symbols");
+
+  if (name && name.length > 50)
+    errors.push("Name can be not more than 50 symbols");
   if (aboutMe && aboutMe.length > 300)
     errors.push("About field is 300 symbols max");
   if (typeof lookingForAJob !== "boolean")
