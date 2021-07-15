@@ -1,0 +1,41 @@
+.addPhotosForm {
+  height: 100px;
+  width: 100px;
+  margin-left: 3px;
+  margin-top: 3px;
+  &__iconBlock {
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    border: 4px dashed #4687ce;
+    position: relative;
+    cursor: pointer;
+    &::before {
+      content: "";
+      position: absolute;
+      height: 10%;
+      width: 50%;
+      background-color: #4687ce;
+      left: 25%;
+      top: 45%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      height: 50%;
+      width: 10%;
+      background-color: #4687ce;
+      left: 45%;
+      top: 25%;
+    }
+  }
+
+  &__error {
+    height: 40px;
+    width: 100px;
+    background-color: #e6e6e6;
+    opacity: 0.8;
+    text-align: center;
+    transform: translateY(-100%);
+  }
+}
