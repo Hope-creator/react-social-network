@@ -1,0 +1,66 @@
+.post {
+  &__name {
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media screen and (max-width: 900px) {
+      max-width: 350px;
+    }
+    @media screen and (max-width: 600px) {
+      max-width: 200px;
+    }
+  }
+  &__header {
+    display: flex;
+    background-color: #4687ce;
+    max-height: 50px;
+    box-sizing: border-box;
+    color: #fff;
+
+    a {
+      color: #fff;
+      line-height: 0.5;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-image {
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+    }
+    &-info {
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    padding: 15px;
+    &-text {
+      word-break: break-all;
+    }
+    &-mediaContainer {
+      display: flex;
+      flex-wrap: wrap;
+      cursor: pointer;
+    }
+    &-mediaItem {
+      width: 100%;
+      height: 100%;
+      outline: none;
+      &_small {
+        width: 24%;
+        height: 100%;
+        border: 1px solid transparent;
+        object-fit: cover;
+        outline: none;
+      }
+    }
+  }
+}
