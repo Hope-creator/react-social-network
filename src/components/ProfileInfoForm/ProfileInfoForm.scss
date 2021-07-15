@@ -1,0 +1,17 @@
+.profileInfoForm {
+  display: flex;
+  &__content {
+    margin-left: auto;
+    width: 300px;
+  }
+  &__buttonsWrap {
+    margin-left: auto;
+  }
+  &__button {
+    outline: none;
+    background-color: #4687fd;
+    padding: 15px;
+    width: 150px;
+    display: block;
+  }
+}
