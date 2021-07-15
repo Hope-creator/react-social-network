@@ -1,0 +1,36 @@
+.aboutForm {
+  &__field {
+    border: 1px solid #7b9095;
+    border-radius: 3px;
+    margin-top: 5px;
+    background-color: #4687fb;
+    padding: 2px;
+    box-shadow: 2px 2px 3px #7b9095;
+    span {
+      display: block;
+      color: #fff;
+    }
+  }
+  &__input {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    overflow: hidden;
+    padding: 3px;
+    resize: none;
+  }
+  &__button {
+    margin-top: 7px;
+    padding: 3px 15px;
+    cursor: pointer;
+  }
+
+  &__errorContainer {
+    margin-top: 15px;
+    border: 2px solid red;
+    &-error {
+      border: 1px solid gray;
+      background-color: #ff7474;
+    }
+  }
+}
