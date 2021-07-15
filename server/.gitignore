@@ -6,6 +6,11 @@
 #secrets
 /utils/secrets.json
 
+#env
+/.env
+
+
+
 # misc
 .DS_Store
 .env.local
