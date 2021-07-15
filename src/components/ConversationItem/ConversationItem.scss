@@ -1,0 +1,83 @@
+.conversationItem {
+  display: flex;
+  padding: 7px;
+  border: 1px solid #bebebe;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f7f8fa;
+  }
+
+  &__name {
+    line-height: 1;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: 900px) {
+      width: 350px;
+    }
+    @media screen and (max-width: 600px) {
+      width: 150px;
+    }
+  }
+
+  &__profile {
+    width: 150px;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__time {
+    float: right;
+  }
+
+  &__link {
+    text-align: center;
+  }
+
+  &__message {
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    width: 100%;
+    cursor: pointer;
+    max-height: 65px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    span {
+      word-break: break-all;
+      text-overflow: ellipsis;
+    }
+    &_unread {
+      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid #e8e8e8;
+      width: 100%;
+      cursor: pointer;
+      max-height: 65px;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow: hidden;
+      background-color: #e7ebff;
+    }
+    &__avatar {
+      width: 25px;
+      height: 25px;
+      min-width: 25px;
+      min-height: 25px;
+      border-radius: 50%;
+      margin-right: 10px;
+      vertical-align: bottom;
+    }
+  }
+}
