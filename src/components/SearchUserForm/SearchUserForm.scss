@@ -1,0 +1,17 @@
+.searchUserForm {
+  &input {
+    outline: none;
+    :focus {
+      background-color: #e6e6e6;
+    }
+  }
+  &__button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      color: #4687ce;
+    }
+  }
+}
