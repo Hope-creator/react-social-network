@@ -1,0 +1,32 @@
+.aboutBlock {
+  &__header {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-bottom: 1px solid #e2e9e6;
+    width: 100%;
+    height: 17%;
+    line-height: 1;
+  }
+  &__button {
+    float: right;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  &__content {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    width: 100%;
+    height: 83%;
+    li {
+      margin-top: 10px;
+    }
+  }
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+  }
+}
