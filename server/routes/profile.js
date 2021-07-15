@@ -77,7 +77,7 @@ const createUserFolderPhotos = (req, res, next) => {
 
 router.get("/:userId", async (req, res) => {
   const id = req.params.userId;
-  if (id.length != 24) {
+  if (id.length !== 24) {
     res.json({ Error: "Id must be string of 24 characters" });
   } else {
     let errors = [];
