@@ -1,0 +1,36 @@
+.messages {
+  &__profile {
+    text-align: center;
+  }
+  &__link {
+    padding: 25px;
+    border: 1px solid #000;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: #f3f3f3;
+    &:hover {
+      background-color: #dedfff;
+    }
+  }
+  &__name {
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    
+    @media screen and (max-width: 900px) {
+      width: 350px;
+    }
+    @media screen and (max-width: 600px) {
+      width: 150px;
+    }
+  }
+  &__avatar {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
