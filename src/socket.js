@@ -1,8 +1,8 @@
 import { io } from "socket.io-client";
 import { dialogsActionCreators } from "./modules/dialogs";
 
-const URL = "http://localhost:5000";
-const socket = io(URL, {
+
+const socket = io({
   autoConnect: false,
   reconnectionAttempts: 3,
 });
