@@ -6,7 +6,7 @@
 
 Тестовый аккаунт: \
 Login: `Test@mail.com`\
-Password: `Test@123`\
+Password: `Test@123`
 
 ## Stack
 
