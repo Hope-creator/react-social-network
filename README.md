@@ -4,9 +4,9 @@
 Может запускаться в течении минуты\
 `https://social-network-hope-creator.herokuapp.com/`
 
-Тестовый аккаунт:
-Login: `Test@mail.com`
-Password: `Test@123`
+Тестовый аккаунт: \
+Login: `Test@mail.com`\
+Password: `Test@123`\
 
 ## Stack
 
