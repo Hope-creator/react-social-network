@@ -80,8 +80,7 @@ const reduder = (state = initialState, action) =>
       }
 
       case actions.CLEAR_ALL_USERS_STATE: {
-        draft = initialState;
-        break;
+        return initialState;
       }
 
       default:

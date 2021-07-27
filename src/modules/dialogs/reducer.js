@@ -111,8 +111,7 @@ const reducer = (state = initialState, action) =>
       }
 
       case actions.CLEAR_ALL_DIALOGS: {
-        draft = initialState;
-        break;
+        return initialState
       }
 
       default:
