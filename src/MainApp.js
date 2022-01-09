@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import { connect, Provider } from "react-redux";
 import { authThunks, authSelectors } from "./modules/auth/index";
-import Preloader from "./parts/preloader";
+import Preloader from "./parts/Preloader";
 import store from "./redux/redux-store";
 import ResetPassword from "./pages/ResetPassword";
 import socket from "./socket";

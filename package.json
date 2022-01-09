@@ -3,24 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
+    "css-loader": "4.3.0",
+    "dotenv": "8.2.0",
+    "dotenv-expand": "5.1.0",
+    "eslint-webpack-plugin": "^2.5.2",
     "final-form": "^4.20.2",
     "focus-trap-react": "^8.7.0",
     "font-awesome": "^4.7.0",
+    "html-webpack-plugin": "4.5.0",
     "immer": "^9.0.5",
     "js-cookie": "^2.2.1",
+    "mini-css-extract-plugin": "0.11.3",
     "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
+    "optimize-css-assets-webpack-plugin": "5.0.4",
+    "pnp-webpack-plugin": "1.6.4",
+    "postcss-flexbugs-fixes": "4.2.1",
     "react": "^16.14.0",
     "react-cookie": "^4.0.3",
+    "react-dev-utils": "^11.0.3",
     "react-dom": "^16.14.0",
     "react-final-form": "^6.5.3",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
     "react-textarea-autosize": "^8.3.3",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
@@ -28,12 +33,13 @@
     "socket.io-client": "^3.1.3"
   },
   "scripts": {
-    "start-client": "react-scripts start",
-    "build-client": "react-scripts build",
+    "start-client": "node scripts/start.js",
+    "build-client": "webpack scripts/build.js",
     "start": "cd server && npm run start",
-    "build": "react-scripts build && (cd server && npm install)",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "node scripts/build.js && (cd server && npm install)",
+    "test": "node scripts/test.js",
+    "start-web": "webpack serve --inline --progress --node-env production",
+    "build-dev": "webpack --node-env development"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,8 +57,105 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "@svgr/webpack": "^6.1.2",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "github:testing-library/user-event",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-preset-react-app": "^10.0.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "eslint": "^8.6.0",
+    "eslint-config-react-app": "^7.0.0",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^25.3.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-testing-library": "^5.0.1",
     "gh-pages": "^3.2.3",
-    "react-test-renderer": "^17.0.2"
+    "jest": "^27.4.7",
+    "jest-circus": "^27.4.6",
+    "jest-resolve": "^27.4.6",
+    "jest-watch-typeahead": "^1.0.0",
+    "postcss-loader": "^6.2.1",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^7.2.0",
+    "postcss-safe-parser": "^6.0.0",
+    "react-test-renderer": "^17.0.2",
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2",
+    "webpack-manifest-plugin": "^4.0.2",
+    "workbox-webpack-plugin": "^6.4.2"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "setupFiles": [
+      "react-app-polyfill/jsdom"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "testEnvironment": "jsdom",
+    "testRunner": "D:\\react-social\\react-social-network\\node_modules\\jest-circus\\runner.js",
+    "transform": {
+      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "modulePaths": [],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web",
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "web.ts",
+      "ts",
+      "web.tsx",
+      "tsx",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ],
+    "resetMocks": true
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
 }
