@@ -2,28 +2,28 @@ import React, { Suspense } from "react";
 import "./App.scss";
 import Navbar from "./parts/Navbar";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import Profile from "./pages/Profile";
 import Header from "./parts/Header";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import { connect, Provider } from "react-redux";
 import { authThunks, authSelectors } from "./modules/auth/index";
-import Preloader from "./parts/Preloader";
+import Preloader from "./parts/preloader";
 import store from "./redux/redux-store";
-import ResetPassword from "./pages/ResetPassword";
 import socket from "./socket";
 import { withCookies } from "react-cookie";
 import NoMatch from "./parts/NoMatch";
 import ErrorBoundary from "./parts/ErrorBoundary";
-import Verified from "./pages/Verified";
-import Verify from "./pages/Verify";
-import Users from "./pages/Users";
 import { appSelectors, appThunks } from "./modules/app/index";
 
 //lazy load
 const Dialogs = React.lazy(() => import("./pages/Dialogs"));
 const News = React.lazy(() => import("./pages/News"));
 const Friends = React.lazy(() => import("./pages/Friends"));
+const Profile = React.lazy(() => import("./pages/Profile"));
+const Users = React.lazy(() => import("./pages/Users"));
+const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
+const Verified = React.lazy(() => import("./pages/Verified"));
+const Verify = React.lazy(() => import("./pages/Verify"));
 
 class App extends React.Component {
   constructor(props) {
