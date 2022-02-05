@@ -53,7 +53,6 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
     }),

@@ -24,7 +24,6 @@
   },
   "scripts": {
     "start": "cd server && npm run start",
-    "build": "node scripts/build.js && (cd server && npm install)",
     "test": "node scripts/test.js",
     "lint": "eslint src",
     "start-dev": "webpack serve --config dev.config.js",
