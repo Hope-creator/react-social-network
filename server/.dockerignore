@@ -3,3 +3,6 @@ build
 server
 README.md
 .gitignore
+.env
+.env example
+uploads
