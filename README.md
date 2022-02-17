@@ -70,7 +70,7 @@ Frontend:
 5. создать файл `.env` и заполнить его по шаблону, указанному в `.env.example`
 6. в корневой папке выполнить `npm start`
 
-<h2 id="install">
+<h2 id="docker">
 Тест в docker
 </h2>
 
