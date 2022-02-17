@@ -3,11 +3,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const checkEnv = () => {
-  if (!process.env.NODEMAILER_HOST || !process.env.NODEMAILER_PORT || process.env.NODEMAILER_USE || process.env.NODEMAILER_PASS) {
+  if (!process.env.NODEMAILER_HOST || !process.env.NODEMAILER_PORT || !process.env.NODEMAILER_USER || !process.env.NODEMAILER_PASS) {
     return false
   }
   return true
 }
+
 
 const emailService = checkEnv() ? nodemailer.createTransport({
   host: process.env.NODEMAILER_HOST,
