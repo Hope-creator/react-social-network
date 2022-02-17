@@ -2,8 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const BundleAnalyzerPlugin =
-  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
@@ -13,11 +11,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "build"),
     filename: "[name].bundle.js",
-    // `chunkFilename` provides a template for naming code-split bundles (optional)
     chunkFilename: "[name].bundle.js",
-    // `path` is the folder where Webpack will place your bundles
-    // `publicPath` is where Webpack will load your bundles from (optional)
-    // publicPath: path.join(__dirname, "build"),
   },
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
