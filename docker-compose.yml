@@ -3,33 +3,36 @@ version: '3.8'
 services:
   mongo_db:
     image: 'mongo'
-    container_name: 'mongo'
+    container_name: 'mongo_db'
     restart: 'always'
     volumes:
-    - 'mongo_data:/data/db'
+      - 'mongo_data:/data/db'
+    ports:
+      - "27017:27017"
   api:
-    image: mhart/alpine-node:12
+    image: mhart/alpine-node:16
     container_name: 'server'
     working_dir: /app/server
-    command: sh -c "npm install && npm run start"
+    command: sh -c "../wait-for-mongodb.sh && ../wait-for-build.sh && echo Start server container && npm i -g npm@latest && npm install && npm run migrate-up && npm run start"
+
     environment:
-    - DATABASE_URL=mongodb://localhost:27017/social-network
-    - COOKIE_SESSION_SECRET=supersecret
-    - JWT_SECRET=supersecret
+      - DATABASE_URL=mongodb://mongo_db/social-network
+      - COOKIE_SESSION_SECRET=supersecret
+      - JWT_SECRET=supersecret
     ports:
-    - "5000:5000"
+      - "5000:5000"
     depends_on:
-    - mongo_db
-    - web
+      - mongo_db
+      - web
     volumes:
-    - '.:/app'
+      - '.:/app'
   web:
-    image: mhart/alpine-node:12
+    image: mhart/alpine-node:16
     container_name: 'web'
     working_dir: /app
-    command: sh -c "npm cache verify && npm install &&  npm run build-prod"
+    command: sh -c "if [[ -d ./build ]]; then echo Build is up; else npm i -g npm@latest && npm install && npm run build-prod; fi"
     volumes:
-    - '.:/app'
+      - '.:/app'
 volumes:
   mongo_data:
   .:

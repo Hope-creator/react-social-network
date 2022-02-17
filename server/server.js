@@ -77,4 +77,4 @@ app.get("*", (req, res) => {
   res.sendFile(index);
 });
 
-http.listen(port, () => console.log(`Server listening on port ${port}`));
+http.listen(port, () => console.log(`Server listening on port ${port} \n Check on http://localhost:5000 \n Login: Test@test.test \n Password: Test@123`));
