@@ -9,11 +9,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "build"),
     filename: "[contenthash].bundle.js",
-    // `chunkFilename` provides a template for naming code-split bundles (optional)
     chunkFilename: "[contenthash].bundle.js",
-    // `path` is the folder where Webpack will place your bundles
-    // `publicPath` is where Webpack will load your bundles from (optional)
-    // publicPath: path.join(__dirname, "build"),
   },
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
