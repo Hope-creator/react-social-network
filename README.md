@@ -1,5 +1,7 @@
 # Social Network React
 
+![Build](https://github.com/Hope-creator/react-social-network/actions/workflows/github-ci.yml/badge.svg)
+
 * [Live Demo](#demo)
 * [Используемый стек](#stack)
 * [Установка](#install)
