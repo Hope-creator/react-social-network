@@ -20,7 +20,7 @@ jobs:
     steps:
     
     - name: Check repo
-    - uses: actions/checkout@v2
+      uses: actions/checkout@v2
     
     - name: Setup Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
@@ -29,7 +29,7 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-    - run: npm run install
+      run: npm run install
     
     - name: Build
-    - run: npm run build
+      run: npm run build
