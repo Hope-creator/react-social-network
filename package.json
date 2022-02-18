@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "cd server && npm run start",
-    "test": "node scripts/test.js",
+    "test": "jest",
     "lint": "eslint src",
     "start-dev": "webpack serve --config dev.config.js",
     "build-dev": "webpack --config dev.config.js",
@@ -93,6 +93,7 @@
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.2.0",
     "postcss-safe-parser": "^6.0.0",
+    "react-app-polyfill": "^3.0.0",
     "react-refresh": "^0.11.0",
     "react-test-renderer": "^17.0.2",
     "sass": "^1.47.0",
@@ -118,29 +119,13 @@
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.js"
-    ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
-    "testRunner": "D:\\react-social\\react-social-network\\node_modules\\jest-circus\\runner.js",
-    "transform": {
-      "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
+    "testRunner": "jest",
     "modulePaths": [],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-    },
     "moduleFileExtensions": [
       "web.js",
       "js",
