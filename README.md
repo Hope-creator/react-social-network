@@ -8,7 +8,7 @@
 <h2 id="demo">
 Live Demo
 </h2>
-Может запускаться в течении минуты\
+Может запускаться в течении минуты
 `https://social-network-hope-creator.herokuapp.com/`
 
 Тестовый аккаунт: \
