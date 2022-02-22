@@ -24,11 +24,12 @@
   },
   "scripts": {
     "start": "cd server && npm run start",
-    "build": "webpack --config prod.config.js",
+    "build": "webpack --config prod.config.js && (cd server && npm install)",
     "test": "jest",
     "lint": "eslint src",
     "start-dev": "webpack serve --config dev.config.js",
-    "build-dev": "webpack --config dev.config.js"
+    "build-dev": "webpack --config dev.config.js",
+    "build-prod": "webpack --config prod.config.js"
   },
   "eslintConfig": {
     "extends": "react-app",
