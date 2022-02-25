@@ -13,7 +13,7 @@ Live Demo
 https://social-network-hope-creator.herokuapp.com/
 
 Тестовый аккаунт: \
-Login: `Test@mail.com`\
+Login: `Test@test.test`\
 Password: `Test@123`
 
 ###### Реализованный функционал
