@@ -29,7 +29,7 @@
     "start": "migrate up && node server.js",
     "nodemon": "nodemon server.js",
     "migrate-up": "migrate up",
-    "magrate-down": "migrate down"
+    "migrate-down": "migrate down"
   },
   "repository": {
     "type": "git",

@@ -18,6 +18,12 @@ module.exports.up = function (next) {
       useFindAndModify: false,
     })
     .then(() => {
+      const user = User.findOne({ email: testEmail });
+      if (user) {
+        console.log("User already exists, skip create");
+        return
+      }
+
       console.log("-----> mongoDB connected for migration...");
       const newUser = new User({
         name: "Test name",
