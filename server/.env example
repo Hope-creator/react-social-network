@@ -4,6 +4,7 @@ DATABASE_URL = mongodb://localhost:27017/social-network
 COOKIE_SESSION_SECRET = supersecret
 JWT_SECRET = supersecret
 
+// **Optional
 NODEMAILER_HOST = smtp.ethereal.email
 NODEMAILER_PORT = 587
 NODEMAILER_USER = 
